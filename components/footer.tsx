@@ -1,20 +1,31 @@
+import Image from "next/image";
+
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-800 py-12 px-6">
+    <footer className="border-t border-border py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <div>
-          <span className="font-mono text-sm font-bold tracking-wider text-neutral-400 uppercase">
-            Estudio_
-          </span>
-          <p className="text-xs text-neutral-600 mt-1">
-            Software a la medida · Salamanca, Gto.
-          </p>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/sigilo_logo.png"
+            alt="Sigilo"
+            width={24}
+            height={24}
+            className="rounded"
+          />
+          <div>
+            <span className="font-display text-sm font-bold tracking-wider text-foreground uppercase">
+              Sigilo
+            </span>
+            <p className="text-xs text-muted mt-0.5">
+              Software a la medida · Salamanca, Gto.
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-6 text-sm text-neutral-500">
+        <div className="flex items-center gap-6 text-sm text-muted">
           <a
-            href="mailto:contacto@prisma360solutions.com"
-            className="hover:text-neutral-300 transition-colors"
+            href="mailto:contacto@sigilo.mx"
+            className="hover:text-foreground transition-colors"
           >
             Email
           </a>
@@ -22,11 +33,11 @@ export function Footer() {
             href="https://wa.me/524641936003"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-neutral-300 transition-colors"
+            className="hover:text-foreground transition-colors"
           >
             WhatsApp
           </a>
-          <span className="text-neutral-700">
+          <span className="text-border-strong">
             © {new Date().getFullYear()}
           </span>
         </div>

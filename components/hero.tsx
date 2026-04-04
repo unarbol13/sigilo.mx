@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -11,71 +12,63 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-sm text-neutral-500 tracking-wider uppercase mb-6">
-            Estudio de software
-          </p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-neutral-100 leading-[1.1]">
-            Construimos software
-            <br />
-            <span className="text-neutral-500">a la velocidad</span>
-            <br />
-            <span className="text-neutral-500">de tu negocio</span>
+          <Image
+            src="/sigilo_logo.png"
+            alt="Sigilo"
+            width={72}
+            height={72}
+            className="mx-auto mb-8 rounded-xl"
+          />
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-wide text-foreground leading-[1.05] uppercase">
+            Sigilo
           </h1>
+          <p className="font-display text-sm text-muted tracking-wider uppercase mt-4">
+            Software & Sistemas de gestión
+          </p>
         </motion.div>
 
-        <motion.p
+        <motion.blockquote
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed"
+          className="mt-12 max-w-2xl mx-auto"
         >
-          Apps moviles, sistemas de gestion, automatizacion.
-          <br className="hidden md:block" />
-          Entendemos tu operacion y la convertimos en tecnologia que funciona.
-        </motion.p>
+          <p className="text-lg md:text-xl text-muted leading-relaxed italic">
+            &ldquo;El tipo más exitoso que conozco me dijo que las cosas mejor
+            hechas son las que no hacen ruido — que lo verdaderamente bueno
+            opera en <em className="not-italic font-semibold text-foreground">sigilo</em>.&rdquo;
+          </p>
+          <p className="text-sm text-muted/60 mt-4">Me quedé con eso.</p>
+        </motion.blockquote>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
             href="#contacto"
-            className="inline-flex items-center justify-center px-8 py-4 bg-neutral-100 text-neutral-950 font-medium rounded-lg hover:bg-white transition-colors text-sm"
+            className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background font-medium rounded-lg hover:opacity-90 transition-colors text-sm"
           >
             Iniciar proyecto
           </a>
           <a
             href="#proyectos"
-            className="inline-flex items-center justify-center px-8 py-4 border border-neutral-700 text-neutral-300 font-medium rounded-lg hover:border-neutral-500 hover:text-neutral-100 transition-colors text-sm"
+            className="inline-flex items-center justify-center px-8 py-4 border border-border-strong text-muted font-medium rounded-lg hover:border-foreground hover:text-foreground transition-colors text-sm"
           >
             Ver proyectos
           </a>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto"
+          className="mt-16 text-sm text-muted"
         >
-          {[
-            { value: "10+", label: "Proyectos" },
-            { value: "4", label: "Sectores" },
-            { value: "2-8", label: "Semanas" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <div className="font-mono text-2xl md:text-3xl font-bold text-neutral-100">
-                {stat.value}
-              </div>
-              <div className="text-xs text-neutral-500 uppercase tracking-wider mt-1">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+          Salamanca, Gto. — Disponible para proyectos en todo México
+        </motion.p>
       </div>
     </section>
   );

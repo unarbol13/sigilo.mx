@@ -10,105 +10,149 @@ export interface Project {
   url: string | null;
   mockupsUrl: string | null;
   stack: string[];
-  image: string | null;
 }
 
 export const PROJECTS: Project[] = [
   {
-    id: "la-cuenta",
-    name: "La Cuenta",
-    tagline: "POS completo para bares y cantinas",
-    type: "App Movil",
-    sector: "Hospitalidad",
-    status: "development",
-    url: null,
-    mockupsUrl: "https://prisma360solutions.com/mockups/la-cuenta/",
-    stack: ["React Native", "Expo", "Supabase", "n8n"],
-    image: null,
-  },
-  {
     id: "prisma-360",
     name: "PRISMA 360",
-    tagline: "Plataforma de produccion de eventos con photobooth",
+    tagline:
+      "Plataforma integral para profesionales y proveedores de eventos. Photobooth con efectos de video, gestión de eventos, directorio de proveedores y catálogo de servicios.",
     type: "SaaS",
     sector: "Eventos",
     status: "live",
     url: "https://prisma360solutions.com",
     mockupsUrl: "https://prisma360solutions.com/mockups/prisma-360/",
     stack: ["Next.js", "React Native", "Supabase"],
-    image: null,
   },
   {
     id: "sigilo",
     name: "Sigilo.mx",
-    tagline: "Inteligencia politica y analisis de datos",
+    tagline:
+      "Sistema de inteligencia política y análisis de datos. Procesamiento de información pública, monitoreo de actores y generación de reportes estratégicos.",
     type: "Plataforma",
     sector: "Gobierno",
     status: "live",
-    url: "https://sigilo.mx",
+    url: "https://sigilo.mx/landing",
     mockupsUrl: null,
     stack: ["Next.js", "Python", "PostgreSQL", "ML"],
-    image: null,
-  },
-  {
-    id: "bsr",
-    name: "BSR Ferreteria",
-    tagline: "E-commerce industrial con inventario en tiempo real",
-    type: "App Movil + Web",
-    sector: "Comercio",
-    status: "development",
-    url: null,
-    mockupsUrl: null,
-    stack: ["React Native", "Django", "PostgreSQL", "Stripe"],
-    image: null,
-  },
-  {
-    id: "munchik",
-    name: "Munchik",
-    tagline: "Sistema a la medida para restaurante de hot chicken",
-    type: "Sistema a la medida",
-    sector: "Hospitalidad",
-    status: "design",
-    url: null,
-    mockupsUrl: null,
-    stack: ["React Native", "Expo", "Supabase"],
-    image: null,
   },
   {
     id: "faro",
     name: "Faro Ciudadano",
-    tagline: "Transparencia civica con gamificacion",
-    type: "Plataforma",
+    tagline:
+      "Plataforma de transparencia ciudadana con mecánicas de gamificación social. Auditorías participativas, visualización de datos municipales y rendición de cuentas.",
+    type: "Civic Tech",
     sector: "Gobierno",
     status: "development",
     url: null,
     mockupsUrl: null,
     stack: ["Next.js", "Supabase", "Mapbox"],
-    image: null,
+  },
+  {
+    id: "aurora",
+    name: "Aurora",
+    tagline:
+      "Plataforma de acompañamiento terapéutico y civic tech enfocada en infancias víctimas de orfandad por violencia o desaparición forzada.",
+    type: "Impacto social",
+    sector: "Social",
+    status: "development",
+    url: null,
+    mockupsUrl: null,
+    stack: ["Next.js", "Supabase", "IA"],
+  },
+  {
+    id: "sas-bot",
+    name: "SAS Bot",
+    tagline:
+      "Motor de automatización para procesos de auditoría. Extracción, validación y cruce de información de fuentes públicas.",
+    type: "Automatización",
+    sector: "Gobierno",
+    status: "live",
+    url: null,
+    mockupsUrl: null,
+    stack: ["Node.js", "Playwright", "WhatsApp API"],
   },
   {
     id: "cauce",
     name: "Cauce.mx",
-    tagline: "Crowdfunding para proyectos de impacto",
+    tagline:
+      "Plataforma de financiamiento colectivo. Creación de campañas, procesamiento de aportaciones y seguimiento de objetivos.",
     type: "Plataforma",
     sector: "Social",
     status: "development",
     url: null,
     mockupsUrl: null,
     stack: ["Next.js", "Supabase", "Stripe"],
-    image: null,
   },
   {
-    id: "sas-bot",
-    name: "SAS Bot",
-    tagline: "Automatizacion de auditorias y reportes",
-    type: "Automatizacion",
-    sector: "Gobierno",
-    status: "live",
+    id: "bsr",
+    name: "BSR Ferretería",
+    tagline:
+      "App móvil para ferretería industrial. Catálogo híbrido con PDF por marca y búsqueda por código, escáner de código de barras.",
+    type: "App Móvil",
+    sector: "Comercio",
+    status: "development",
     url: null,
     mockupsUrl: null,
-    stack: ["Node.js", "Playwright", "WhatsApp API"],
-    image: null,
+    stack: ["React Native", "Django", "PostgreSQL"],
+  },
+  {
+    id: "la-cuenta",
+    name: "La Cuenta",
+    tagline:
+      "App móvil POS para gestión integral de bares y cantinas. Comandas en tiempo real, inventario con recetas, control de personal.",
+    type: "App Móvil",
+    sector: "Hospitalidad",
+    status: "development",
+    url: null,
+    mockupsUrl: "https://prisma360solutions.com/mockups/la-cuenta/",
+    stack: ["React Native", "Expo", "Supabase"],
+  },
+  {
+    id: "prisma-rediseno",
+    name: "PRISMA 360 — Rediseño Modular",
+    tagline:
+      "Rediseño completo de PRISMA 360 en 3 módulos: Photobooth, Video Studio, Planner CRM. 29 pantallas, ~64 phone frames.",
+    type: "UX/UI Design",
+    sector: "Eventos",
+    status: "design",
+    url: null,
+    mockupsUrl: null,
+    stack: ["Figma", "Design System"],
+  },
+];
+
+export interface CaseStudy {
+  id: string;
+  sector: string;
+  client: string;
+  description: string;
+  modules: string;
+}
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    id: "automotriz",
+    sector: "Sector automotriz",
+    client: "Llantas y flotillas",
+    description:
+      "Sistema de gestión integral — ventas, inventario y operación.",
+    modules: "8 módulos · 11 usuarios · 4 fases",
+  },
+  {
+    id: "restaurantero",
+    sector: "Sector restaurantero",
+    client: "Bares y cantinas",
+    description: "La Cuenta — POS y gestión integral para bares.",
+    modules: "Comandas · Inventario · Personal",
+  },
+  {
+    id: "ferretero",
+    sector: "Sector ferretero",
+    client: "Mantenimiento y distribución",
+    description: "BSR Ferretería — App de catálogo y gestión comercial.",
+    modules: "Catálogo · Escáner · Pedidos",
   },
 ];
 
@@ -120,28 +164,34 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
-    title: "Apps moviles",
+    title: "Software a la medida",
     description:
-      "iOS y Android simultaneo. POS, inventario, gestion de personal — lo que tu negocio necesite en la mano.",
-    examples: ["POS para bares", "E-commerce", "Apps de campo"],
+      "Aplicaciones web y móviles diseñadas desde cero para resolver problemas específicos de tu operación.",
+    examples: ["Apps móviles", "Plataformas web", "Sistemas internos"],
   },
   {
-    title: "Sistemas web",
+    title: "CRM & sistemas de gestión",
     description:
-      "Plataformas a la medida que reemplazan Excel, WhatsApp y el cuaderno. Dashboards, reportes, automatizacion.",
-    examples: ["CRM", "Gestion de proyectos", "Portales ciudadanos"],
-  },
-  {
-    title: "Automatizacion",
-    description:
-      "Bots, integraciones y flujos que eliminan trabajo manual. WhatsApp, email, facturacion, reportes automaticos.",
-    examples: ["Alertas de inventario", "Reportes diarios", "Facturacion"],
+      "Herramientas personalizadas para controlar clientes, ventas, servicios y seguimiento.",
+    examples: ["CRM", "ERP", "Control de inventario"],
   },
   {
     title: "Inteligencia de datos",
     description:
-      "Recoleccion, analisis y visualizacion. Desde horas pico de un bar hasta mapas de poder politico.",
-    examples: ["Analytics", "Prediccion de demanda", "Mapas interactivos"],
+      "Recolección, procesamiento y visualización de datos para la toma de decisiones.",
+    examples: ["Analytics", "Dashboards", "Reportes automáticos"],
+  },
+  {
+    title: "Automatización de procesos",
+    description:
+      "Bots, integraciones y flujos automatizados que eliminan trabajo manual repetitivo.",
+    examples: ["WhatsApp bots", "Facturación", "Alertas"],
+  },
+  {
+    title: "Civic Tech & impacto social",
+    description:
+      "Plataformas de participación ciudadana, transparencia y rendición de cuentas.",
+    examples: ["Portales ciudadanos", "Open data", "Auditorías"],
   },
 ];
 
@@ -150,28 +200,28 @@ export const PROCESS_STEPS = [
     number: "01",
     title: "Entender",
     description:
-      "Nos sentamos con tu equipo. Entendemos como opera tu negocio, que funciona, que no, y donde duele.",
+      "Nos sentamos con tu equipo. Entendemos cómo opera tu negocio, qué funciona, qué no, y dónde duele.",
     duration: "1-2 semanas",
   },
   {
     number: "02",
-    title: "Disenar",
+    title: "Diseñar",
     description:
-      "Mockups interactivos de cada pantalla. Los ves, los pruebas, los ajustamos. No escribimos una linea de codigo hasta que estes convencido.",
+      "Mockups interactivos de cada pantalla. Los ves, los pruebas, los ajustamos. No escribimos una línea de código hasta que estés convencido.",
     duration: "1-2 semanas",
   },
   {
     number: "03",
     title: "Construir",
     description:
-      "Desarrollo agil con entregas semanales. Cada viernes ves avance real, no reportes. Si algo no te gusta, lo cambiamos el lunes.",
+      "Desarrollo ágil con entregas semanales. Cada viernes ves avance real, no reportes. Si algo no te gusta, lo cambiamos el lunes.",
     duration: "4-8 semanas",
   },
   {
     number: "04",
     title: "Entregar",
     description:
-      "Deploy, capacitacion, y soporte. Tu equipo sabe usar el sistema desde el dia uno. Nosotros seguimos disponibles.",
+      "Deploy, capacitación y soporte. Tu equipo sabe usar el sistema desde el día uno. Nosotros seguimos disponibles.",
     duration: "1 semana",
   },
 ];

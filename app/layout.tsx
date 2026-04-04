@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Michroma } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,8 +12,14 @@ const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const michroma = Michroma({
+  variable: "--font-display",
+  weight: "400",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Estudio — Software a la medida",
+  title: "Sigilo — Software a la medida",
   description:
     "Diseñamos y construimos software a la medida. Apps móviles, sistemas de gestión, automatización y tecnología cívica.",
 };
@@ -26,9 +32,16 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrains.variable} ${michroma.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-neutral-950 text-neutral-100">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col">
         {children}
       </body>
     </html>

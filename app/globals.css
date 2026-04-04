@@ -1,25 +1,68 @@
 @import "tailwindcss";
 
 @theme inline {
+  --color-background: #FAFAF8;
+  --color-foreground: #0A0A0A;
+  --color-muted: #6B7280;
+  --color-accent: #C8A84E;
+  --color-accent-dark: #B8952F;
+  --color-surface: #F0EDE8;
+  --color-card: #FFFFFF;
+  --color-border: #E5E2DC;
+  --color-border-strong: #D1CDC4;
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+}
+
+/* Dark mode overrides */
+.dark {
   --color-background: #0A0A0A;
   --color-foreground: #F5F5F5;
-  --color-muted: #737373;
-  --color-accent: #3B82F6;
-  --color-accent-muted: rgba(59, 130, 246, 0.12);
+  --color-muted: #9CA3AF;
+  --color-accent: #C8A84E;
+  --color-accent-dark: #D4B96A;
   --color-surface: #141414;
   --color-card: #1A1A1A;
   --color-border: #262626;
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --color-border-strong: #3A3A3A;
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Subtle texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 ::selection {
   background: var(--color-accent);
   color: white;
+}
+
+/* Hide scrollbar on horizontal slider */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
