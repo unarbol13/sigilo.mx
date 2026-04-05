@@ -38,7 +38,7 @@ export function Hero() {
             hechas son las que no hacen ruido — que lo verdaderamente bueno
             opera en <em className="not-italic font-semibold text-foreground">sigilo</em>.&rdquo;
           </p>
-          <p className="text-sm text-muted/60 mt-4">Me quedé con eso.</p>
+          <p className="text-sm text-muted mt-4">Me quedé con eso.</p>
         </motion.blockquote>
 
         <motion.div

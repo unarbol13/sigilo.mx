@@ -26,7 +26,7 @@ export function TechStack() {
           {STACK.map((tech) => (
             <span
               key={tech}
-              className="font-mono text-sm text-muted/70 tracking-wide"
+              className="font-mono text-sm text-muted tracking-wide"
             >
               {tech}
             </span>
