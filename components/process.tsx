@@ -20,7 +20,7 @@ export function Process() {
             Cómo trabajamos
           </h2>
           <p className="text-muted mt-3 max-w-xl">
-            Cada producto que construyo nace de un problema real que nadie está
+            Cada producto que construimos nace de un problema real que nadie está
             resolviendo bien.
           </p>
         </motion.div>

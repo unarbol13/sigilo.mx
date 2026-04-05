@@ -15,14 +15,12 @@ export function Hero() {
           <Image
             src="/sigilo_logo.png"
             alt="Sigilo"
-            width={72}
-            height={72}
-            className="mx-auto mb-8 rounded-xl"
+            width={360}
+            height={360}
+            className="mx-auto mb-8"
+            priority
           />
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-wide text-foreground leading-[1.05] uppercase">
-            Sigilo
-          </h1>
-          <p className="font-display text-sm text-muted tracking-wider uppercase mt-4">
+          <p className="font-display text-sm text-muted tracking-wider uppercase">
             Software & Sistemas de gestión
           </p>
         </motion.div>
@@ -33,10 +31,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-12 max-w-2xl mx-auto"
         >
-          <p className="text-lg md:text-xl text-muted leading-relaxed italic">
+          <p className="text-lg md:text-xl text-muted leading-relaxed italic max-w-lg mx-auto">
             &ldquo;El tipo más exitoso que conozco me dijo que las cosas mejor
-            hechas son las que no hacen ruido — que lo verdaderamente bueno
-            opera en <em className="not-italic font-semibold text-foreground">sigilo</em>.&rdquo;
+            hechas son las que no hacen ruido — que <span className="not-italic font-bold hero-highlight">lo verdaderamente bueno opera en</span> <em className="not-italic font-semibold text-accent">sigilo</em>.&rdquo;
           </p>
           <p className="text-sm text-muted mt-4">Me quedé con eso.</p>
         </motion.blockquote>
