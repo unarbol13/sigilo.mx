@@ -13,7 +13,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
         >
           <Image
-            src="/sigilo_logo.png"
+            src="/sigilo_logo_oscuro.png"
             alt="Sigilo"
             width={360}
             height={360}
@@ -33,7 +33,7 @@ export function Hero() {
         >
           <p className="text-lg md:text-xl text-muted leading-relaxed italic max-w-lg mx-auto">
             &ldquo;El tipo más exitoso que conozco me dijo que las cosas mejor
-            hechas son las que no hacen ruido — que <span className="not-italic font-bold hero-highlight">lo verdaderamente bueno opera en</span> <em className="not-italic font-semibold text-accent">sigilo</em>.&rdquo;
+            hechas son las que no hacen ruido — que <span className="not-italic font-bold text-muted-strong">lo verdaderamente bueno opera en</span> <em className="not-italic font-semibold text-accent">sigilo</em>.&rdquo;
           </p>
           <p className="text-sm text-muted mt-4">Me quedé con eso.</p>
         </motion.blockquote>
@@ -46,7 +46,7 @@ export function Hero() {
         >
           <a
             href="#contacto"
-            className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background font-medium rounded-lg hover:opacity-90 transition-colors text-sm"
+            className="inline-flex items-center justify-center px-8 py-4 bg-accent text-background font-semibold rounded-lg hover:bg-accent-hover transition-colors text-sm"
           >
             Iniciar proyecto
           </a>

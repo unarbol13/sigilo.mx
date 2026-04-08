@@ -1,4 +1,5 @@
-export type ProjectStatus = "live" | "development" | "design";
+export type ProjectStatus = "live" | "development" | "design" | "concept";
+export type ProjectFocus = "civictech" | "business";
 
 export interface Project {
   id: string;
@@ -7,9 +8,11 @@ export interface Project {
   type: string;
   sector: string;
   status: ProjectStatus;
+  focus: ProjectFocus;
   url: string | null;
   mockupsUrl: string | null;
   stack: string[];
+  highlights: string[];
 }
 
 export const PROJECTS: Project[] = [
@@ -21,21 +24,11 @@ export const PROJECTS: Project[] = [
     type: "SaaS",
     sector: "Eventos",
     status: "live",
+    focus: "business",
     url: "https://prisma360solutions.com",
     mockupsUrl: "https://prisma360solutions.com/mockups/prisma-360/",
     stack: ["Next.js", "React Native", "Supabase"],
-  },
-  {
-    id: "sigilo",
-    name: "Sigilo.mx",
-    tagline:
-      "Sistema de inteligencia política y análisis de datos. Procesamiento de información pública, monitoreo de actores y generación de reportes estratégicos.",
-    type: "Plataforma",
-    sector: "Gobierno",
-    status: "live",
-    url: "https://sigilo.mx/landing",
-    mockupsUrl: null,
-    stack: ["Next.js", "Python", "PostgreSQL", "ML"],
+    highlights: ["Photobooth con efectos en tiempo real", "App iOS y Android nativa", "Directorio de proveedores con búsqueda"],
   },
   {
     id: "faro",
@@ -44,22 +37,40 @@ export const PROJECTS: Project[] = [
       "Plataforma de transparencia ciudadana con mecánicas de gamificación social. Auditorías participativas, visualización de datos municipales y rendición de cuentas.",
     type: "Civic Tech",
     sector: "Gobierno",
-    status: "development",
+    status: "concept",
+    focus: "civictech",
     url: null,
     mockupsUrl: null,
     stack: ["Next.js", "Supabase", "Mapbox"],
+    highlights: ["Gamificación ciudadana", "Auditorías participativas", "Mapas interactivos"],
+  },
+  {
+    id: "lumos",
+    name: "Lumos",
+    tagline:
+      "Plataforma de acompañamiento para infancias y familias afectadas por desaparición forzada. Apoyo psicosocial, seguimiento de casos y coordinación con instituciones.",
+    type: "Impacto social",
+    sector: "Social",
+    status: "development",
+    focus: "civictech",
+    url: null,
+    mockupsUrl: null,
+    stack: ["Next.js", "Supabase", "IA"],
+    highlights: ["Acompañamiento guiado por IA", "Coordinación con CEAIV/PEPNNA", "Seguimiento de casos"],
   },
   {
     id: "aurora",
     name: "Aurora",
     tagline:
-      "Plataforma de acompañamiento terapéutico y civic tech enfocada en infancias víctimas de orfandad por violencia o desaparición forzada.",
+      "Expansión de Lumos con herramientas de campo para madres buscadoras en Guanajuato. Coordinación de búsqueda y acompañamiento en terreno.",
     type: "Impacto social",
     sector: "Social",
-    status: "development",
+    status: "concept",
+    focus: "civictech",
     url: null,
     mockupsUrl: null,
     stack: ["Next.js", "Supabase", "IA"],
+    highlights: ["Coordinación de búsqueda en campo", "Geolocalización en tiempo real", "Extensión de Lumos"],
   },
   {
     id: "sas-bot",
@@ -69,9 +80,11 @@ export const PROJECTS: Project[] = [
     type: "Automatización",
     sector: "Gobierno",
     status: "live",
+    focus: "civictech",
     url: null,
     mockupsUrl: null,
     stack: ["Node.js", "Playwright", "WhatsApp API"],
+    highlights: ["Scraping automatizado de fuentes públicas", "Alertas vía WhatsApp", "Cruce de datos multi-fuente"],
   },
   {
     id: "cauce",
@@ -81,9 +94,11 @@ export const PROJECTS: Project[] = [
     type: "Plataforma",
     sector: "Social",
     status: "development",
+    focus: "civictech",
     url: null,
     mockupsUrl: null,
     stack: ["Next.js", "Supabase", "Stripe"],
+    highlights: ["Pagos con Stripe", "Seguimiento de metas en tiempo real"],
   },
   {
     id: "bsr",
@@ -93,9 +108,11 @@ export const PROJECTS: Project[] = [
     type: "App Móvil",
     sector: "Comercio",
     status: "development",
+    focus: "business",
     url: null,
     mockupsUrl: null,
     stack: ["React Native", "Django", "PostgreSQL"],
+    highlights: ["Escáner de código de barras", "Catálogo PDF por marca", "Búsqueda por código de parte"],
   },
   {
     id: "la-cuenta",
@@ -105,9 +122,11 @@ export const PROJECTS: Project[] = [
     type: "App Móvil",
     sector: "Hospitalidad",
     status: "development",
+    focus: "business",
     url: null,
     mockupsUrl: "https://prisma360solutions.com/mockups/la-cuenta/",
     stack: ["React Native", "Expo", "Supabase"],
+    highlights: ["Comandas en tiempo real", "Inventario con recetas y merma", "Control de turnos y propinas"],
   },
   {
     id: "prisma-rediseno",
@@ -117,9 +136,25 @@ export const PROJECTS: Project[] = [
     type: "UX/UI Design",
     sector: "Eventos",
     status: "design",
+    focus: "business",
     url: null,
     mockupsUrl: null,
     stack: ["Figma", "Design System"],
+    highlights: ["29 pantallas diseñadas", "3 módulos independientes", "Design system propio"],
+  },
+  {
+    id: "vita-bajio",
+    name: "Vita Bajío",
+    tagline:
+      "Sistema de gestión de llantas y flotillas. Ventas, cotizaciones, inventario y control operativo.",
+    type: "Sistema de gestión",
+    sector: "Automotriz",
+    focus: "business",
+    status: "design",
+    url: null,
+    mockupsUrl: null,
+    stack: ["Next.js", "Supabase", "React Native"],
+    highlights: ["8 módulos de gestión", "Control de flotillas", "Cotizador integrado"],
   },
 ];
 
@@ -143,7 +178,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     id: "restaurantero",
     sector: "Sector restaurantero",
-    client: "Bares y cantinas",
+    client: "Bares y restaurantes",
     description: "La Cuenta — POS y gestión integral para bares.",
     modules: "Comandas · Inventario · Personal",
   },

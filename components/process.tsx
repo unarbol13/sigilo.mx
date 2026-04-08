@@ -37,10 +37,10 @@ export function Process() {
             >
               {/* Connector line */}
               {i < PROCESS_STEPS.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-8 h-px bg-border-strong z-0" />
+                <div className="hidden lg:block absolute top-8 left-full w-8 h-px bg-accent/20 z-0" />
               )}
 
-              <div className="font-mono text-5xl font-bold text-border-strong mb-4">
+              <div className="font-mono text-5xl font-bold text-accent/30 mb-4">
                 {step.number}
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">

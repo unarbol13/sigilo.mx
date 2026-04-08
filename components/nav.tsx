@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ThemeToggle } from "./theme-toggle";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -12,7 +11,7 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2.5">
           <Image
-            src="/sigilo_logo.png"
+            src="/sigilo_logo_oscuro.png"
             alt="Sigilo"
             width={28}
             height={28}
@@ -27,26 +26,26 @@ export function Nav() {
         <div className="hidden md:flex items-center gap-8">
           <a
             href="#proyectos"
-            className="text-sm text-muted hover:text-foreground transition-colors"
+            className="text-sm text-muted-strong hover:text-accent transition-colors"
           >
             Proyectos
           </a>
           <a
             href="#servicios"
-            className="text-sm text-muted hover:text-foreground transition-colors"
+            className="text-sm text-muted-strong hover:text-accent transition-colors"
           >
             Servicios
           </a>
           <a
             href="#proceso"
-            className="text-sm text-muted hover:text-foreground transition-colors"
+            className="text-sm text-muted-strong hover:text-accent transition-colors"
           >
             Proceso
           </a>
-          <ThemeToggle />
+
           <a
             href="#contacto"
-            className="text-sm font-medium text-background bg-foreground px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
+            className="text-sm font-medium text-background bg-accent px-4 py-2 rounded-lg hover:bg-accent-hover transition-colors"
           >
             Iniciar proyecto
           </a>
@@ -54,7 +53,7 @@ export function Nav() {
 
         {/* Mobile toggle */}
         <div className="flex md:hidden items-center gap-3">
-          <ThemeToggle />
+
           <button
             onClick={() => setOpen(!open)}
             className="text-muted p-2 text-xl"
@@ -92,7 +91,7 @@ export function Nav() {
           <a
             href="#contacto"
             onClick={() => setOpen(false)}
-            className="text-sm font-medium text-background bg-foreground px-4 py-2 rounded-lg text-center"
+            className="text-sm font-medium text-background bg-accent px-4 py-2 rounded-lg text-center hover:bg-accent-hover transition-colors"
           >
             Iniciar proyecto
           </a>

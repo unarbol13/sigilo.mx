@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-12 px-6">
+    <footer className="border-t border-accent/20 py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-3">
           <Image
-            src="/sigilo_logo.png"
+            src="/sigilo_logo_oscuro.png"
             alt="Sigilo"
             width={24}
             height={24}
@@ -22,10 +22,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6 text-sm text-muted">
+        <div className="flex items-center gap-6 text-sm text-muted-strong">
           <a
             href="mailto:contacto@sigilo.mx"
-            className="hover:text-foreground transition-colors"
+            className="hover:text-accent transition-colors"
           >
             Email
           </a>
@@ -33,7 +33,7 @@ export function Footer() {
             href="https://wa.me/524641936003"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
+            className="hover:text-accent transition-colors"
           >
             WhatsApp
           </a>

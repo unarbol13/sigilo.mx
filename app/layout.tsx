@@ -22,6 +22,30 @@ export const metadata: Metadata = {
   title: "Sigilo — Software a la medida",
   description:
     "Diseñamos y construimos software a la medida. Apps móviles, sistemas de gestión, automatización y tecnología cívica.",
+  openGraph: {
+    title: "Sigilo — Software a la medida",
+    description:
+      "Diseñamos y construimos software a la medida. Apps móviles, sistemas de gestión, automatización y tecnología cívica.",
+    url: "https://sigilo.mx",
+    siteName: "Sigilo",
+    images: [
+      {
+        url: "https://sigilo.mx/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sigilo — Software a la medida",
+      },
+    ],
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sigilo — Software a la medida",
+    description:
+      "Diseñamos y construimos software a la medida. Apps móviles, sistemas de gestión, automatización y tecnología cívica.",
+    images: ["https://sigilo.mx/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -32,15 +56,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${jetbrains.variable} ${michroma.variable} h-full antialiased`}
+      className={`dark ${inter.variable} ${jetbrains.variable} ${michroma.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()`,
-          }}
-        />
-      </head>
+      <head />
       <body className="min-h-full flex flex-col">
         {children}
       </body>

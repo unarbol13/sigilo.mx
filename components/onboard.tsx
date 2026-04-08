@@ -49,8 +49,8 @@ function OptionButton({
       onClick={onClick}
       className={`w-full text-left px-5 py-4 rounded-xl border text-sm transition-all duration-200 ${
         selected
-          ? "border-foreground bg-foreground/5 text-foreground font-medium"
-          : "border-border text-muted hover:border-border-strong hover:text-foreground"
+          ? "border-accent bg-accent/5 text-foreground font-medium"
+          : "border-border text-muted hover:border-accent/40 hover:text-foreground"
       }`}
     >
       {label}
@@ -89,8 +89,8 @@ export function Onboard() {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-card border border-border rounded-2xl p-12"
           >
-            <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mx-auto mb-6">
-              <span className="text-emerald-600 text-2xl font-bold">✓</span>
+            <div className="w-16 h-16 rounded-full bg-success-bg border border-success-border flex items-center justify-center mx-auto mb-6">
+              <span className="text-success-text text-2xl font-bold">✓</span>
             </div>
             <h3 className="text-2xl font-bold text-foreground mb-3">
               Listo, te contactamos pronto
@@ -126,7 +126,7 @@ export function Onboard() {
           {/* Progress bar */}
           <div className="h-1 bg-surface rounded-full mb-8 overflow-hidden">
             <motion.div
-              className="h-full bg-foreground rounded-full"
+              className="h-full bg-accent rounded-full"
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
             />
@@ -245,7 +245,7 @@ export function Onboard() {
                     value={data.name}
                     onChange={(e) => setData({ ...data, name: e.target.value })}
                     placeholder="Juan Perez"
-                    className="w-full bg-background border border-border rounded-xl px-5 py-3.5 text-foreground text-sm placeholder:text-border-strong focus:outline-none focus:border-foreground transition-colors"
+                    className="w-full bg-background border border-border rounded-xl px-5 py-3.5 text-foreground text-sm placeholder:text-border-strong focus:outline-none focus:border-accent transition-colors"
                   />
                 </div>
 
@@ -260,7 +260,7 @@ export function Onboard() {
                       setData({ ...data, contact: e.target.value })
                     }
                     placeholder="477 123 4567 o tu@email.com"
-                    className="w-full bg-background border border-border rounded-xl px-5 py-3.5 text-foreground text-sm placeholder:text-border-strong focus:outline-none focus:border-foreground transition-colors"
+                    className="w-full bg-background border border-border rounded-xl px-5 py-3.5 text-foreground text-sm placeholder:text-border-strong focus:outline-none focus:border-accent transition-colors"
                   />
                 </div>
               </motion.div>
@@ -331,7 +331,7 @@ export function Onboard() {
               <button
                 onClick={goNext}
                 disabled={!data.name || !data.contact}
-                className="text-sm font-medium text-background bg-foreground px-6 py-2.5 rounded-lg hover:opacity-90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                className="text-sm font-medium text-background bg-accent px-6 py-2.5 rounded-lg hover:bg-accent-hover transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 Revisar →
               </button>
@@ -340,7 +340,7 @@ export function Onboard() {
             {step === 5 && (
               <button
                 onClick={handleSubmit}
-                className="text-sm font-medium text-background bg-foreground px-6 py-2.5 rounded-lg hover:opacity-90 transition-colors"
+                className="text-sm font-medium text-background bg-accent px-6 py-2.5 rounded-lg hover:bg-accent-hover transition-colors"
               >
                 Enviar
               </button>

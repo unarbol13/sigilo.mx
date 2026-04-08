@@ -15,7 +15,7 @@ const STACK = [
 
 export function TechStack() {
   return (
-    <section className="py-12 px-6 border-y border-border">
+    <section className="py-12 px-6 border-y border-accent/15">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
@@ -26,7 +26,7 @@ export function TechStack() {
           {STACK.map((tech) => (
             <span
               key={tech}
-              className="font-mono text-sm text-muted tracking-wide"
+              className="font-mono text-sm text-muted-strong tracking-wide"
             >
               {tech}
             </span>

@@ -30,7 +30,7 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
-              className="bg-card border border-border rounded-xl px-6 py-5 hover:border-border-strong transition-colors"
+              className="bg-card border border-border rounded-xl px-6 py-5 hover:border-accent/40 transition-colors"
             >
               <h3 className="text-sm font-semibold text-foreground mb-1.5">
                 {service.title}
@@ -69,7 +69,7 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-card border border-border rounded-2xl p-8 hover:border-border-strong hover:shadow-lg transition-all duration-300"
+              className="bg-card border border-border rounded-2xl p-8 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
             >
               <p className="font-mono text-xs text-accent-dark uppercase tracking-wider mb-3">
                 {cs.sector}
