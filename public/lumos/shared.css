@@ -1,0 +1,487 @@
+/* Lumos — Landing v0.1
+   Identidad visual: modo oscuro como default, contraste TOTAL,
+   tipografía generosa para vista cansada de adultos mayores.
+   Ver lumos/identidad/visual/ para racional completo. */
+
+:root {
+  --noche: #0E0B08;
+  --noche-suave: #1A1610;
+  --luz: #FAF6EE;
+  --luz-tenue: #D9D2C2;
+  --chispa: #F5C75A;
+  --resplandor: #FCE4A6;
+  --linea: #2A241B;
+  --alerta: #E8634A;
+  --calma: #7AB37B;
+}
+
+* { box-sizing: border-box; }
+*, *::before, *::after { color: var(--luz); }
+
+html, body {
+  margin: 0;
+  background: var(--noche);
+  color: var(--luz);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 19px;
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.display {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wrap-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Símbolo Lumos — círculo de luz con halo (V1 decorativo) */
+.simbolo {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 45%, #FFE08A 0%, #F5C75A 45%, rgba(245,199,90,0) 75%);
+  filter: drop-shadow(0 0 32px rgba(245,199,90,0.35));
+  flex-shrink: 0;
+}
+.simbolo-grande {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 0 64px rgba(245,199,90,0.45));
+  animation: respirar 6s ease-in-out infinite;
+}
+@keyframes respirar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.78; }
+}
+.simbolo-pequeno {
+  width: 28px;
+  height: 28px;
+  background: var(--chispa);
+  filter: none;
+}
+
+/* Header */
+.barra-superior {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(14, 11, 8, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linea);
+  padding: 14px 0;
+}
+.barra-superior .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.marca-nombre {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+.barra-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Hero */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.hero-simbolo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.hero-titulo {
+  font-size: 44px;
+  margin: 0 0 20px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-bajada {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--luz);
+  max-width: 680px;
+  margin: 0 auto 40px;
+  font-weight: 400;
+}
+
+/* Botones de audiencia */
+.botones-audiencia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--luz);
+  background: transparent;
+  color: var(--luz);
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+}
+.boton:hover {
+  background: var(--luz);
+  color: var(--noche);
+}
+.boton:hover * { color: var(--noche); }
+.boton-primario {
+  background: var(--chispa);
+  border-color: var(--chispa);
+  color: var(--noche);
+}
+.boton-primario * { color: var(--noche); }
+.boton-primario:hover {
+  background: var(--resplandor);
+  border-color: var(--resplandor);
+  color: var(--noche);
+}
+.boton-primario:hover * { color: var(--noche); }
+
+/* Secciones */
+.seccion {
+  padding: 80px 0;
+  border-top: 1px solid var(--linea);
+}
+.seccion-titulo {
+  font-size: 32px;
+  margin: 0 0 16px;
+}
+.seccion-bajada {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--luz-tenue);
+  max-width: 680px;
+  margin: 0 0 40px;
+}
+.seccion-bajada * { color: var(--luz-tenue); }
+
+/* Tarjetas */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.tarjeta {
+  padding: 28px;
+  background: var(--noche-suave);
+  border: 1px solid var(--linea);
+  border-radius: 16px;
+}
+.tarjeta-numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--chispa);
+  color: var(--noche);
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+.tarjeta-numero * { color: var(--noche); }
+.tarjeta-titulo {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 22px;
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+.tarjeta-cuerpo {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--luz-tenue);
+  margin: 0;
+}
+.tarjeta-cuerpo * { color: var(--luz-tenue); }
+
+/* Cita destacada */
+.cita {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 28px;
+  line-height: 1.4;
+  font-style: italic;
+  font-weight: 400;
+  padding: 32px;
+  background: var(--noche-suave);
+  border-left: 4px solid var(--chispa);
+  border-radius: 4px 16px 16px 4px;
+  margin: 32px 0;
+}
+.cita-autor {
+  display: block;
+  margin-top: 16px;
+  font-style: normal;
+  font-size: 16px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: var(--luz-tenue);
+}
+.cita-autor * { color: var(--luz-tenue); }
+
+/* Listas con check */
+.lista-check {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  display: grid;
+  gap: 14px;
+}
+.lista-check li {
+  padding-left: 36px;
+  position: relative;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.lista-check li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--chispa);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+/* Formulario */
+.form-bloque {
+  background: var(--noche-suave);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--linea);
+}
+.form-titulo {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 26px;
+  margin: 0 0 20px;
+  font-weight: 400;
+}
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.form-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--luz);
+}
+.form-input,
+.form-textarea {
+  background: var(--noche);
+  border: 2px solid var(--linea);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-family: inherit;
+  color: var(--luz);
+  width: 100%;
+}
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--chispa);
+}
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Bloque Contexto ONU — ancla institucional */
+.contexto-onu {
+  background: linear-gradient(180deg, var(--noche) 0%, #12100C 100%);
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  padding: 100px 0;
+  position: relative;
+}
+.contexto-onu::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--chispa);
+}
+.etiqueta-onu {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--chispa);
+  margin-bottom: 24px;
+  padding: 6px 14px;
+  border: 1px solid var(--chispa);
+  border-radius: 999px;
+}
+.etiqueta-onu * { color: var(--chispa); }
+.titulo-onu {
+  font-size: 52px;
+  line-height: 1.1;
+  margin: 0 0 28px;
+  max-width: 800px;
+}
+.texto-onu {
+  font-size: 21px;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 0 48px;
+  font-weight: 400;
+}
+.timeline-onu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 48px 0;
+  padding: 32px 0;
+  border-top: 2px solid var(--chispa);
+  border-bottom: 2px solid var(--chispa);
+}
+.timeline-hito {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.timeline-fecha {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 28px;
+  color: var(--chispa);
+  font-weight: 400;
+}
+.timeline-fecha * { color: var(--chispa); }
+.timeline-evento {
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.stat-onu {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 32px 0;
+  padding: 24px 32px;
+  background: rgba(245, 199, 90, 0.08);
+  border-left: 4px solid var(--chispa);
+  border-radius: 0 12px 12px 0;
+}
+.stat-onu-numero {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--chispa);
+  line-height: 1;
+}
+.stat-onu-numero * { color: var(--chispa); }
+.stat-onu-texto {
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.enlace-fuente {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--chispa);
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--chispa);
+  padding-bottom: 2px;
+  margin-top: 16px;
+}
+.enlace-fuente * { color: var(--chispa); }
+.enlace-fuente:hover {
+  color: var(--resplandor);
+  border-color: var(--resplandor);
+}
+.enlace-fuente:hover * { color: var(--resplandor); }
+@media (max-width: 640px) {
+  .contexto-onu { padding: 64px 0; }
+  .titulo-onu { font-size: 34px; }
+  .texto-onu { font-size: 18px; }
+  .stat-onu-numero { font-size: 42px; }
+  .stat-onu { flex-direction: column; gap: 8px; padding: 20px; }
+  .timeline-fecha { font-size: 22px; }
+}
+
+/* Footer */
+.pie {
+  padding: 60px 0 80px;
+  border-top: 1px solid var(--linea);
+  font-size: 16px;
+  color: var(--luz-tenue);
+}
+.pie * { color: var(--luz-tenue); }
+.pie a {
+  color: var(--chispa);
+  text-decoration: none;
+}
+.pie a * { color: var(--chispa); }
+.pie-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.pie-rejilla h4 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 18px;
+  margin: 0 0 12px;
+  color: var(--luz);
+  font-weight: 400;
+}
+.pie-rejilla h4 * { color: var(--luz); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hero { padding: 56px 0 40px; }
+  .hero-titulo { font-size: 32px; }
+  .hero-bajada { font-size: 19px; }
+  .seccion { padding: 56px 0; }
+  .seccion-titulo { font-size: 26px; }
+  .simbolo-grande { width: 140px; height: 140px; }
+  .botones-audiencia { flex-direction: column; align-items: stretch; }
+  .boton { justify-content: center; }
+  .form-bloque { padding: 24px; }
+  .cita { font-size: 22px; padding: 24px; }
+}

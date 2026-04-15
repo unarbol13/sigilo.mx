@@ -248,7 +248,7 @@
       </label>
       <label class="card flex gap-3 cursor-pointer">
         <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
-        <span class="text-sm">Entiendo que su escritura dentro de la app es privada y cifrada — ni yo ni Lumos podemos leerla.</span>
+        <span class="text-sm">Entiendo que sus palabras se guardan de forma anónima y cifrada en los servidores de Lumos. Lumos las lee solo para detectar momentos de riesgo grave que requieran apoyo profesional. Nunca se comparten con terceros sin mi consentimiento explícito.</span>
       </label>
       <label class="card flex gap-3 cursor-pointer">
         <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
@@ -256,7 +256,11 @@
       </label>
       <label class="card flex gap-3 cursor-pointer">
         <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
-        <span class="text-sm">Puedo retirar este consentimiento y eliminar todos los datos en cualquier momento.</span>
+        <span class="text-sm"><b>Opcional:</b> autorizo que sus palabras anonimizadas se usen para investigación académica sobre la experiencia del duelo, incluidas experiencias no convencionales (intuiciones, sueños significativos, presencias). Puedo retirar este permiso en cualquier momento.</span>
+      </label>
+      <label class="card flex gap-3 cursor-pointer">
+        <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
+        <span class="text-sm">Puedo retirar este consentimiento y eliminar todos sus datos en cualquier momento.</span>
       </label>
     </div>
     <div class="pb-4">
@@ -279,10 +283,10 @@
       </div>
       <div class="card">
         <ul class="space-y-3 text-sm">
-          <li>• Lo que escribas aquí es <b>tuyo</b>. Nadie más lo lee.</li>
+          <li>• Lo que escribas aquí se guarda de forma <b>anónima</b>. No tiene tu nombre real, solo un alias que tú eliges.</li>
+          <li>• Lumos lo lee solo para cuidarte: si aparecen palabras que nos preocupan mucho, te avisamos y le decimos a un adulto que sepa cómo ayudar.</li>
           <li>• Puedes salir cuando quieras. No pasa nada.</li>
           <li>• Si algo te hace sentir mal, pausa. Hay un botón para eso.</li>
-          <li>• Si cuentas algo que nos preocupa mucho, te vamos a avisar antes de decirle a alguien.</li>
         </ul>
       </div>
       <p class="text-sm">¿Quieres usar Lumos?</p>
@@ -300,14 +304,17 @@
     </header>
     <div class="flex-1 flex flex-col gap-5">
       <div>
-        <h2 class="display text-2xl leading-snug">Cómo le llamamos aquí</h2>
+        <h2 class="display text-2xl leading-snug">Su alias en Lumos</h2>
         <p class="mt-2 text-sm" style="color: var(--ink-muted)">
-          No necesitamos su nombre real. Elija cómo quiere que Lumos se dirija a usted.
+          Lumos nunca le pide su nombre real. Elija un alias — la palabra con la que la app se va a dirigir a usted. Puede ser su primer nombre, un apodo, o cualquier palabra que le acomode.
+        </p>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">
+          Puede cambiarlo cuando quiera desde Ajustes.
         </p>
       </div>
       <div>
-        <label class="text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Apodo o primer nombre</label>
-        <input type="text" placeholder="Ej. Lupita, Ma., o como prefiera" class="w-full mt-2 rounded-xl border px-4 py-3 bg-white" style="border-color: var(--line)"/>
+        <label class="text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Su alias</label>
+        <input type="text" placeholder="Ej. Lupita, Ma., Sombra, lo que prefiera" class="w-full mt-2 rounded-xl border px-4 py-3 bg-white" style="border-color: var(--line)" required/>
       </div>
       <div>
         <label class="text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Si quiere compartir — puede saltarlo</label>
@@ -321,8 +328,7 @@
         </div>
       </div>
     </div>
-    <div class="pb-4 flex gap-3">
-      <button class="btn-secondary" style="background: #fff; border: 1px solid var(--line); color: var(--ink)" onclick="go(8)">Saltar</button>
+    <div class="pb-4">
       <button class="btn-primary" onclick="go(8)">Continuar</button>
     </div>
   </section>
@@ -338,8 +344,8 @@
         <p class="mt-2 text-sm" style="color: var(--ink-muted)">Seguridad y privacidad son lo primero en Lumos.</p>
       </div>
       <div class="card">
-        <h3 class="font-medium">Lo que escribe es suyo</h3>
-        <p class="mt-1 text-sm" style="color: var(--ink-muted)">Su escritura libre se guarda cifrada en este dispositivo. Ni Lumos ni su acompañante pueden leerla.</p>
+        <h3 class="font-medium">Lo que escribe se guarda anónimo</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">Sus palabras se almacenan cifradas, sin su nombre real, solo con el alias que eligió. Lumos las lee únicamente para detectar momentos de riesgo grave que requieran apoyo profesional.</p>
       </div>
       <div class="card">
         <h3 class="font-medium">Pausar siempre es una opción</h3>

@@ -49,7 +49,7 @@ const FOCUS_CONFIG: Record<ProjectFocus, { label: string; description: string }>
 
 function ProjectCard({ project }: { project: Project }) {
   const status = statusConfig[project.status];
-  const href = project.mockupsUrl ?? project.url;
+  const href = project.url ?? project.mockupsUrl;
   const tilt = useTilt(8);
 
   const inner = (
@@ -106,7 +106,7 @@ function ProjectCard({ project }: { project: Project }) {
       {href && (
         <div className="mt-4 pt-4 border-t border-border">
           <span className="text-xs text-muted group-hover:text-foreground transition-colors font-medium">
-            {project.mockupsUrl ? "Ver mockups →" : "Visitar sitio →"}
+            {project.url ? "Visitar sitio →" : "Ver mockups →"}
           </span>
         </div>
       )}
