@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lumos — Documentación</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="shared.css" />
+<style>
+  body { display: block; background: #EFEAE1; padding: 0; min-height: 100vh; }
+  .doc-shell { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  .sidebar {
+    background: var(--bg); border-right: 1px solid var(--line);
+    padding: 20px 0; overflow-y: auto; max-height: 100vh;
+    position: sticky; top: 0;
+  }
+  .sidebar-header { padding: 0 20px 14px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+  .sidebar-header a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .sidebar-header .small { font-size: 11px; color: var(--ink-muted); }
+  .group-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink-soft); padding: 14px 20px 6px;
+  }
+  .doc-link {
+    display: block; padding: 8px 20px; color: var(--ink);
+    text-decoration: none; font-size: 14px; line-height: 1.3;
+    border-left: 2px solid transparent;
+  }
+  .doc-link:hover { background: var(--accent-soft); }
+  .doc-link.active {
+    background: var(--accent-soft); color: var(--accent-ink);
+    border-left-color: var(--accent); font-weight: 500;
+  }
+  .doc-link .doc-hint { display: block; font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+  .doc-link.active .doc-hint { color: var(--accent-ink); opacity: 0.8; }
+
+  .content {
+    padding: 40px 48px 80px; max-width: 860px;
+    background: #fff; box-shadow: 0 0 60px rgba(31,27,22,0.04);
+  }
+  .content-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .breadcrumb { font-size: 12px; color: var(--ink-muted); }
+  .header-actions { display: flex; gap: 8px; }
+  .header-actions button, .header-actions a {
+    padding: 6px 12px; border-radius: 8px; background: var(--bg);
+    border: 1px solid var(--line); color: var(--ink); font-size: 13px;
+    cursor: pointer; text-decoration: none;
+  }
+  .header-actions button:hover, .header-actions a:hover { background: var(--accent-soft); }
+
+  /* Markdown styles */
+  .md { font-size: 15px; line-height: 1.7; color: var(--ink); }
+  .md h1 { font-family: "Iowan Old Style", Georgia, serif; font-size: 2rem; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .md h2 { font-family: "Iowan Old Style", Georgia, serif; font-size: 1.5rem; margin: 36px 0 12px; letter-spacing: -0.01em; }
+  .md h3 { font-size: 1.15rem; margin: 28px 0 10px; }
+  .md h4 { font-size: 1rem; margin: 20px 0 8px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .md p, .md li { margin: 0 0 12px; }
+  .md ul, .md ol { padding-left: 22px; margin: 0 0 14px; }
+  .md code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: var(--bg); padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; color: var(--accent-ink);
+  }
+  .md pre { background: var(--bg); padding: 14px 18px; border-radius: 10px; overflow-x: auto; border: 1px solid var(--line); }
+  .md pre code { background: transparent; padding: 0; color: var(--ink); }
+  .md a { color: var(--accent-ink); text-decoration: underline; }
+  .md table { border-collapse: collapse; margin: 14px 0; width: 100%; font-size: 14px; }
+  .md th, .md td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+  .md th { background: var(--bg); font-weight: 500; }
+  .md blockquote {
+    border-left: 3px solid var(--accent); padding: 4px 16px;
+    margin: 14px 0; background: var(--accent-soft); color: var(--accent-ink);
+    border-radius: 0 8px 8px 0;
+  }
+  .md hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
+  .md strong { font-weight: 600; }
+
+  .empty { text-align: center; color: var(--ink-muted); padding: 80px 20px; }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .doc-shell { grid-template-columns: 1fr; }
+    .sidebar { position: static; max-height: none; }
+    .content { padding: 24px 20px; }
+    .content-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+  }
+
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+    margin-left: 6px; vertical-align: middle;
+  }
+  .badge-new { background: var(--accent-soft); color: var(--accent-ink); }
+  .badge-updated { background: var(--calm-soft); color: var(--calm); }
+</style>
+</head>
+<body>
+<div class="doc-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <div class="dot" style="width: 28px; height: 28px"></div>
+        <div>
+          <div style="font-weight: 600">Lumos</div>
+          <div class="small">Documentación del proyecto</div>
+        </div>
+      </a>
+    </div>
+    <nav id="sidebar-nav"></nav>
+  </aside>
+
+  <main class="content">
+    <div class="content-header">
+      <div>
+        <div class="breadcrumb" id="breadcrumb">Inicio</div>
+        <div id="doc-title" style="font-size: 12px; color: var(--ink-muted); margin-top: 4px; font-family: ui-monospace, monospace"></div>
+      </div>
+      <div class="header-actions">
+        <a href="index.html">← Mockups</a>
+        <button onclick="window.print()">Imprimir</button>
+      </div>
+    </div>
+    <div id="doc-content" class="md">
+      <div class="empty">Seleccione un documento a la izquierda.</div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  // ─── CONFIGURACIÓN DE DOCUMENTOS ──────────────────────────────────────
+  // Agregue o modifique entradas aquí. path es relativo a esta página (docs.html está en /mockups/v1/).
+  const DOCS = [
+    {
+      group: "Teoría clínica",
+      items: [
+        { id: "propuesta", title: "Propuesta clínica v1", hint: "Marco de pérdida ambigua y arquitectura de contenido", path: "../../documentacion/propuesta-clinica-v1.md", badge: "nuevo" },
+        { id: "toolkit",   title: "Toolkit de técnicas",    hint: "Catálogo curado para la DCC",                      path: "../../documentacion/toolkit-tecnicas.md", badge: "nuevo" },
+      ]
+    },
+    {
+      group: "Decisiones clínicas",
+      items: [
+        { id: "dc-readme", title: "Proceso",     hint: "Cómo funcionan las DC",               path: "../../documentacion/decisiones-clinicas/README.md", badge: "nuevo" },
+        { id: "dc-001",    title: "DC-001",      hint: "Análisis de escritura para crisis",    path: "../../documentacion/decisiones-clinicas/DC-001-analisis-escritura-crisis.md", badge: "nuevo" },
+        { id: "dc-002",    title: "DC-002",      hint: "Señal silenciosa",                     path: "../../documentacion/decisiones-clinicas/DC-002-senal-silenciosa.md", badge: "nuevo" },
+        { id: "dc-003",    title: "DC-003",      hint: "Copy de experiencias en Nombrar",      path: "../../documentacion/decisiones-clinicas/DC-003-experiencias-nombrar.md", badge: "nuevo" },
+        { id: "dc-004",    title: "DC-004",      hint: "Consentimiento del tutor",             path: "../../documentacion/decisiones-clinicas/DC-004-checkboxes-tutor.md", badge: "nuevo" },
+      ]
+    },
+    {
+      group: "Arquitectura",
+      items: [
+        { id: "arq-lumos", title: "Arquitectura Lumos (MVP)", hint: "Delta para el MVP",             path: "../../documentacion/arquitectura-lumos.md", badge: "nuevo" },
+        { id: "arq",       title: "Arquitectura general",      hint: "Base heredada (Aurora)",        path: "../../documentacion/arquitectura.md" },
+        { id: "amenazas",  title: "Modelo de amenazas",        hint: "Seguridad y riesgo",            path: "../../documentacion/modelo-amenazas.md" },
+      ]
+    },
+    {
+      group: "ADRs técnicos",
+      items: [
+        { id: "adr-001", title: "ADR-001", hint: "Cifrado local",             path: "../../documentacion/decisiones/001-cifrado-local.md" },
+        { id: "adr-002", title: "ADR-002", hint: "Offline-first",             path: "../../documentacion/decisiones/002-offline-first.md" },
+        { id: "adr-003", title: "ADR-003", hint: "Aislamiento colectivas",    path: "../../documentacion/decisiones/003-aislamiento-colectivas.md" },
+        { id: "adr-004", title: "ADR-004", hint: "Stack tecnológico",          path: "../../documentacion/decisiones/004-stack-tecnologico.md" },
+        { id: "adr-005", title: "ADR-005", hint: "Pivot a MVP Capa 2",         path: "../../documentacion/decisiones/005-pivot-mvp-capa2.md" },
+        { id: "adr-006", title: "ADR-006", hint: "Rebrand Lumos/Tlanesi",      path: "../../documentacion/decisiones/006-rebrand-lumos-tlanesi.md", badge: "actualizado" },
+      ]
+    },
+    {
+      group: "Ética",
+      items: [
+        { id: "etica-consent", title: "Consentimiento informado",   path: "../../documentacion/etica/consentimiento-informado.md" },
+        { id: "etica-fen",     title: "Manejo de datos Capa 3",     path: "../../documentacion/etica/manejo-datos-fenomenologicos.md" },
+        { id: "etica-crisis",  title: "Protocolo de crisis",        path: "../../documentacion/etica/protocolo-crisis.md" },
+      ]
+    },
+    {
+      group: "Guías",
+      items: [
+        { id: "guia-dev",      title: "Desarrollo local",   path: "../../documentacion/guias/desarrollo-local.md" },
+        { id: "guia-deploy",   title: "Despliegue",          path: "../../documentacion/guias/despliegue.md" },
+        { id: "guia-pruebas",  title: "Pruebas de campo",    path: "../../documentacion/guias/pruebas-campo.md" },
+      ]
+    },
+  ];
+  // ──────────────────────────────────────────────────────────────────────
+
+  // Renderizar sidebar
+  const nav = document.getElementById("sidebar-nav");
+  DOCS.forEach(group => {
+    const label = document.createElement("div");
+    label.className = "group-label";
+    label.textContent = group.group;
+    nav.appendChild(label);
+    group.items.forEach(item => {
+      const a = document.createElement("a");
+      a.href = "?doc=" + item.id;
+      a.className = "doc-link";
+      a.dataset.id = item.id;
+      a.innerHTML = `<span>${item.title}${item.badge ? `<span class="badge badge-${item.badge === "nuevo" ? "new" : "updated"}">${item.badge}</span>` : ""}</span>${item.hint ? `<span class="doc-hint">${item.hint}</span>` : ""}`;
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadDoc(item);
+        history.pushState({ id: item.id }, "", "?doc=" + item.id);
+      });
+      nav.appendChild(a);
+    });
+  });
+
+  function findDoc(id) {
+    for (const g of DOCS) {
+      for (const it of g.items) if (it.id === id) return { group: g.group, item: it };
+    }
+    return null;
+  }
+
+  async function loadDoc(item) {
+    document.querySelectorAll(".doc-link").forEach(l => l.classList.toggle("active", l.dataset.id === item.id));
+    document.getElementById("breadcrumb").textContent = (findDoc(item.id)?.group || "") + " · " + item.title;
+    document.getElementById("doc-title").textContent = item.path.replace("../../", "");
+    const c = document.getElementById("doc-content");
+    c.innerHTML = '<div class="empty">Cargando…</div>';
+    try {
+      const res = await fetch(item.path);
+      if (!res.ok) throw new Error("No se pudo cargar (" + res.status + ")");
+      const txt = await res.text();
+      // Quitar frontmatter YAML para render
+      const noFrontmatter = txt.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, "");
+      c.innerHTML = marked.parse(noFrontmatter);
+      // Reescribir enlaces relativos dentro del markdown para mantener funcionando la navegación interna
+      c.querySelectorAll("a").forEach(a => {
+        const href = a.getAttribute("href");
+        if (href && !href.startsWith("http") && !href.startsWith("#") && !href.startsWith("?")) {
+          // Convert .md relative links to ?doc= if we have a match
+          const resolved = href.split("/").pop().replace(".md", "").toLowerCase();
+          const match = findDocByFilename(href);
+          if (match) {
+            a.href = "?doc=" + match.id;
+            a.addEventListener("click", (e) => {
+              e.preventDefault();
+              loadDoc(match);
+              history.pushState({ id: match.id }, "", "?doc=" + match.id);
+            });
+          }
+        }
+      });
+      window.scrollTo(0, 0);
+    } catch (err) {
+      c.innerHTML = '<div class="empty">No se pudo cargar: ' + err.message + '<br><small>' + item.path + '</small></div>';
+    }
+  }
+
+  function findDocByFilename(href) {
+    const target = href.replace(/^\.\.\//, "").replace(/^\.\//, "").toLowerCase();
+    for (const g of DOCS) {
+      for (const it of g.items) {
+        if (it.path.toLowerCase().endsWith(target)) return it;
+      }
+    }
+    return null;
+  }
+
+  // Inicializar desde ?doc=
+  const params = new URLSearchParams(location.search);
+  const initialId = params.get("doc");
+  if (initialId) {
+    const found = findDoc(initialId);
+    if (found) loadDoc(found.item);
+  } else {
+    // Default: primer doc "nuevo" o el primero
+    const first = DOCS[0].items[0];
+    loadDoc(first);
+    history.replaceState({ id: first.id }, "", "?doc=" + first.id);
+  }
+
+  window.addEventListener("popstate", (e) => {
+    const id = new URLSearchParams(location.search).get("doc");
+    if (id) {
+      const f = findDoc(id);
+      if (f) loadDoc(f.item);
+    }
+  });
+</script>
+</body>
+</html>
