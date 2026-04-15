@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es-MX" class="audience-teen">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumos — Sostener (13-17)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body class="audience-teen">
+<div class="phone">
+  <button class="crisis-fab" onclick="location.href='06-triage-crisis.html'">Pedir apoyo</button>
+
+  <div class="screen-inner">
+    <div class="topbar">
+      <button class="back" onclick="location.href='02-home.html'">← Volver</button>
+      <button class="pause" onclick="alert('Lo dejamos aquí. Nada se borra.')">Pausar</button>
+    </div>
+
+    <div class="px-6 pb-10">
+      <header class="mt-2">
+        <span class="chip">Para ti · 13 a 17</span>
+        <h1 class="display text-3xl leading-tight mt-4">Dos verdades a la vez</h1>
+        <p class="mt-3 text-base" style="color: var(--ink-muted)">
+          Tu papá, tu mamá, tu hermana — alguien a quien quieres no está, y a la vez está siempre en tu cabeza. Eso es raro. También tiene nombre.
+        </p>
+      </header>
+
+      <!-- Visual -->
+      <section class="mt-6 flex justify-center">
+        <svg viewBox="0 0 240 140" width="100%" style="max-width:260px">
+          <circle cx="90" cy="70" r="55" fill="none" stroke="#8B6BB8" stroke-width="1.5"/>
+          <circle cx="150" cy="70" r="55" fill="none" stroke="#1F1B16" stroke-width="1.5"/>
+          <text x="60" y="76" font-family="Georgia" font-size="14" fill="#4A3370">está</text>
+          <text x="156" y="76" font-family="Georgia" font-size="14" fill="#1F1B16">no está</text>
+        </svg>
+      </section>
+
+      <section class="mt-4">
+        <p class="leading-relaxed">
+          No tienes que elegir. No tienes que decidir si "ya superarlo" o "seguir esperando". Puedes sostener las dos cosas — y aun así salir a la calle, ver a tus amigas, enojarte, reírte. Eso no es traición. Es estar vivo.
+        </p>
+      </section>
+
+      <!-- Identidad -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">Una pregunta, solo si quieres</p>
+        <div class="card card-static mt-3">
+          <p class="font-medium">¿Quién eres tú, ahora, con esta ausencia?</p>
+          <p class="mt-1 text-sm" style="color: var(--ink-muted)">No tienes que contestar en palabras. Puedes elegir un formato.</p>
+          <div class="mt-4 grid grid-cols-3 gap-2">
+            <button class="card text-center text-sm" style="padding: 14px 8px">
+              <div class="mx-auto mb-2" style="width:22px;height:22px;border:1.5px solid var(--ink);border-radius:4px"></div>
+              Escribir
+            </button>
+            <button class="card text-center text-sm" style="padding: 14px 8px">
+              <div class="mx-auto mb-2" style="width:22px;height:22px;border-radius:999px;border:1.5px solid var(--ink)"></div>
+              Audio
+            </button>
+            <button class="card text-center text-sm" style="padding: 14px 8px">
+              <div class="mx-auto mb-2" style="width:22px;height:22px;border:1.5px solid var(--ink);transform:rotate(45deg)"></div>
+              Dibujar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt -->
+      <section class="mt-6">
+        <div class="card card-static" style="background: var(--accent-soft); border-color: transparent">
+          <p class="text-sm" style="color: var(--accent-ink)">
+            Si empiezas a escribir y no te gusta, lo borras. Esto es tuyo.
+          </p>
+          <textarea placeholder="Empieza por donde quieras..." class="mt-3 w-full rounded-lg p-3 text-sm bg-white" style="border: 1px solid var(--line); resize: vertical; min-height: 100px"></textarea>
+        </div>
+      </section>
+
+      <!-- Identidades que conviven -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">Puedes ser todas estas a la vez</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip">Hija de alguien que no está</span>
+          <span class="chip chip-calm">Amiga</span>
+          <span class="chip">Estudiante</span>
+          <span class="chip chip-calm">Hermana</span>
+          <span class="chip">La que busca</span>
+          <span class="chip chip-calm">La que ríe</span>
+          <span class="chip">La que descansa</span>
+        </div>
+        <p class="mt-3 text-sm" style="color: var(--ink-muted)">
+          Tu identidad no se reduce a esta ausencia. Pero tampoco tienes que esconderla.
+        </p>
+      </section>
+
+      <!-- Cierre -->
+      <section class="mt-10">
+        <div class="flex flex-col gap-2">
+          <button class="btn-primary" onclick="location.href='02-home.html'">Listo por hoy</button>
+          <button class="btn-secondary" onclick="alert('Se envía una señal breve a tu acompañante: quiero hablar. Sin detalles.')">Quiero hablar con mi acompañante</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="dev-bar">
+    <div class="flex items-center gap-2">
+      <span class="dev-label">Mockup v1 · 04b Sostener · Adolescente</span>
+    </div>
+    <div class="flex gap-3">
+      <a href="index.html">Índice</a>
+      <a href="04-sostener-adulto.html">‹ Adulto</a>
+      <a href="04-sostener-nino.html">Niño/a ›</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

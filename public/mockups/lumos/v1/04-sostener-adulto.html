@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumos — Sostener la ambivalencia (adulto)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+<div class="phone">
+  <button class="crisis-fab" onclick="location.href='06-triage-crisis.html'">Necesito apoyo</button>
+
+  <div class="screen-inner">
+    <div class="topbar">
+      <button class="back" onclick="location.href='02-home.html'">← Inicio</button>
+      <button class="pause" onclick="alert('Se pausa el módulo.')">Pausar</button>
+    </div>
+
+    <div class="px-6 pb-10">
+      <header class="mt-2">
+        <span class="chip">Módulo · Sostener la ambivalencia</span>
+        <h1 class="display text-3xl leading-tight mt-4">Vivir con la pregunta abierta</h1>
+        <p class="mt-3 text-base" style="color: var(--ink-muted)">Una versión pensada para personas adultas. También hay una para adolescentes y otra para niñas y niños.</p>
+      </header>
+
+      <!-- Venn simbólico -->
+      <section class="mt-8 flex justify-center">
+        <svg viewBox="0 0 240 140" width="100%" style="max-width:260px">
+          <circle cx="90" cy="70" r="55" fill="none" stroke="#B8842C" stroke-width="1.5" opacity="0.7"/>
+          <circle cx="150" cy="70" r="55" fill="none" stroke="#1F1B16" stroke-width="1.5" opacity="0.7"/>
+          <text x="60" y="76" font-family="Georgia" font-size="14" fill="#6B4E17">está</text>
+          <text x="156" y="76" font-family="Georgia" font-size="14" fill="#1F1B16">no está</text>
+        </svg>
+      </section>
+
+      <!-- Intro -->
+      <section class="mt-4">
+        <p class="leading-relaxed">
+          Muchas personas piensan que tienen que elegir: o creo que regresa, o acepto que no. Pauline Boss propone otra cosa: dejar que las dos verdades vivan al mismo tiempo. No es contradicción — es cómo funciona la pérdida ambigua.
+        </p>
+      </section>
+
+      <!-- Ejercicio "ambas-y" -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">Un ejercicio · "Ambas verdades"</p>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">Complete cada frase si quiere. Nadie lee lo que escribe.</p>
+
+        <div class="mt-4 flex flex-col gap-3">
+          <div class="card card-static">
+            <p class="text-sm">Hoy sostengo que ella está...</p>
+            <textarea class="mt-2 w-full rounded-lg p-3 text-sm" style="background: var(--bg); border: 1px solid var(--line); resize: vertical; min-height: 60px"></textarea>
+          </div>
+          <div class="card card-static">
+            <p class="text-sm">Y también sostengo que no está...</p>
+            <textarea class="mt-2 w-full rounded-lg p-3 text-sm" style="background: var(--bg); border: 1px solid var(--line); resize: vertical; min-height: 60px"></textarea>
+          </div>
+          <div class="card card-static">
+            <p class="text-sm">Lo que hago hoy, con las dos cosas dentro, es...</p>
+            <textarea class="mt-2 w-full rounded-lg p-3 text-sm" style="background: var(--bg); border: 1px solid var(--line); resize: vertical; min-height: 60px"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Audio -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">Si prefiere escuchar</p>
+        <div class="card card-static mt-3" style="background: var(--accent-soft); border-color: transparent">
+          <div class="flex items-center gap-3">
+            <div class="dot" style="width: 40px; height: 40px"></div>
+            <div class="flex-1">
+              <p class="font-medium" style="color: var(--accent-ink)">Meditación guiada</p>
+              <p class="text-xs" style="color: var(--accent-ink); opacity: 0.8">Sostener dos cosas a la vez · 6 min</p>
+            </div>
+            <button class="btn-primary" style="width: auto; padding: 10px 16px">▶</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cierre -->
+      <section class="mt-10">
+        <p class="leading-relaxed text-sm">
+          No se cierra la pregunta hoy. Ni mañana. Esa es la propuesta: que la pregunta pueda vivir con usted, sin tener que contestarla.
+        </p>
+        <div class="mt-5 flex flex-col gap-2">
+          <button class="btn-primary" onclick="location.href='02-home.html'">Terminar por ahora</button>
+          <button class="btn-secondary" onclick="location.href='05-escritura-libre.html'">Seguir en mi escritura</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="dev-bar">
+    <div class="flex items-center gap-2">
+      <span class="dev-label">Mockup v1 · 04a Sostener · Adulto</span>
+    </div>
+    <div class="flex gap-3">
+      <a href="index.html">Índice</a>
+      <a href="04-sostener-adolescente.html">Adolescente ›</a>
+      <a href="04-sostener-nino.html">Niño/a ›</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

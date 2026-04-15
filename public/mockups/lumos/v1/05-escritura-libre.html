@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumos — Escritura libre</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+<div class="phone with-bottomnav">
+  <button class="crisis-fab" onclick="location.href='06-triage-crisis.html'">Necesito apoyo</button>
+
+  <div class="screen-inner">
+    <div class="topbar">
+      <button class="back" onclick="location.href='02-home.html'">← Inicio</button>
+      <div class="flex items-center gap-2 text-xs" style="color: var(--ink-muted)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Cifrado en este dispositivo
+      </div>
+    </div>
+
+    <div class="px-6 pb-10">
+      <header class="mt-2">
+        <h1 class="display text-3xl leading-tight">Su espacio</h1>
+        <p class="mt-2 text-base" style="color: var(--ink-muted)">
+          Privado. Sin prompts. Solo suyo. Nadie — ni Lumos, ni su acompañante — puede leerlo.
+        </p>
+      </header>
+
+      <!-- Nuevo -->
+      <section class="mt-6">
+        <button class="card text-left w-full flex items-center gap-4" onclick="document.getElementById('editor').classList.remove('hidden'); this.classList.add('hidden')">
+          <div class="dot" style="width: 36px; height: 36px; filter: none"></div>
+          <div>
+            <p class="font-medium">Escribir ahora</p>
+            <p class="text-sm" style="color: var(--ink-muted)">Una palabra, una página, lo que salga.</p>
+          </div>
+        </button>
+
+        <!-- Editor -->
+        <div id="editor" class="hidden mt-4 card card-static">
+          <p class="text-xs" style="color: var(--ink-muted)">Hoy · 14 abr 2026 · 11:32</p>
+          <textarea autofocus placeholder="..." class="mt-2 w-full text-base leading-relaxed" style="border: 0; background: transparent; outline: none; resize: vertical; min-height: 200px; font-family: inherit"></textarea>
+
+          <div class="mt-3 flex gap-2 justify-between items-center">
+            <div class="flex gap-2">
+              <button class="btn-secondary" style="width: auto; padding: 8px 12px; font-size: 13px">🎙 Voz</button>
+              <button class="btn-secondary" style="width: auto; padding: 8px 12px; font-size: 13px">📎 Adjuntar</button>
+            </div>
+            <button class="btn-primary" style="width: auto; padding: 10px 18px">Guardar</button>
+          </div>
+          <p class="mt-3 text-xs" style="color: var(--ink-soft)">
+            Esto no analiza lo que escribe. Solo detecta señales muy graves (como ideas de lastimarse). Si aparece algo así, Lumos se pausa y le ofrece apoyo inmediato.
+          </p>
+        </div>
+      </section>
+
+      <!-- Entradas previas -->
+      <section class="mt-8">
+        <div class="flex items-baseline justify-between">
+          <h2 class="display text-xl">Lo que ha escrito</h2>
+          <span class="text-xs" style="color: var(--ink-muted)">12 entradas</span>
+        </div>
+
+        <div class="mt-4 flex flex-col gap-3">
+          <div class="card card-static">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs" style="color: var(--ink-muted)">Ayer · 22:18</p>
+                <p class="mt-1">Un día largo.</p>
+              </div>
+              <button class="text-xs" style="color: var(--ink-soft)">···</button>
+            </div>
+          </div>
+
+          <div class="card card-static">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs" style="color: var(--ink-muted)">12 abr · 07:04</p>
+                <p class="mt-1">Desperté pensando en cuando aprendió a andar en bici.</p>
+              </div>
+              <button class="text-xs" style="color: var(--ink-soft)">···</button>
+            </div>
+          </div>
+
+          <div class="card card-static">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs" style="color: var(--ink-muted)">10 abr · 16:55</p>
+                <p class="mt-1">Hoy no tuve palabras.</p>
+                <p class="mt-1 text-xs" style="color: var(--ink-soft)">🎙 Audio · 2:14</p>
+              </div>
+              <button class="text-xs" style="color: var(--ink-soft)">···</button>
+            </div>
+          </div>
+
+          <div class="card card-static">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs" style="color: var(--ink-muted)">7 abr · 21:30</p>
+                <p class="mt-1">Alguien en la tienda dijo su nombre sin querer. Me tuve que sentar.</p>
+              </div>
+              <button class="text-xs" style="color: var(--ink-soft)">···</button>
+            </div>
+          </div>
+
+          <div class="card card-static">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs" style="color: var(--ink-muted)">3 abr · 09:12</p>
+                <p class="mt-1">Terminé el módulo de "nombrar". Me sirvió que alguien lo dijera primero.</p>
+              </div>
+              <button class="text-xs" style="color: var(--ink-soft)">···</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nota -->
+      <section class="mt-8">
+        <div class="card card-static" style="background: transparent; border-style: dashed">
+          <p class="text-sm leading-relaxed">
+            Puede eliminar cualquier entrada en cualquier momento. También puede borrar todo de golpe si lo necesita (<a href="#" style="color: var(--ink); text-decoration: underline">aprender cómo</a>).
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button onclick="location.href='02-home.html'">
+      <svg viewBox="0 0 24 24"><path d="M3 12 12 4l9 8M5 10v10h14V10"/></svg>
+      Inicio
+    </button>
+    <button class="active">
+      <svg viewBox="0 0 24 24"><path d="M4 20h16M6 16l8-8 4 4-8 8H6v-4z"/></svg>
+      Escritura
+    </button>
+    <button onclick="location.href='07-directorio.html'">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+      Acompañamiento
+    </button>
+    <button>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg>
+      Ajustes
+    </button>
+  </nav>
+
+  <div class="dev-bar">
+    <div class="flex items-center gap-2">
+      <span class="dev-label">Mockup v1 · 05 Escritura</span>
+    </div>
+    <div class="flex gap-3">
+      <a href="index.html">Índice</a>
+      <a href="04-sostener-nino.html">‹ Anterior</a>
+      <a href="06-triage-crisis.html">Siguiente ›</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

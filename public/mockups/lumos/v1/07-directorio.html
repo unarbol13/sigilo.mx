@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumos — Acompañamiento</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+<div class="phone with-bottomnav">
+  <button class="crisis-fab" onclick="location.href='06-triage-crisis.html'">Necesito apoyo</button>
+
+  <div class="screen-inner">
+    <div class="topbar">
+      <button class="back" onclick="location.href='02-home.html'">← Inicio</button>
+    </div>
+
+    <div class="px-6 pb-10">
+      <header class="mt-2">
+        <h1 class="display text-3xl leading-tight">Acompañamiento</h1>
+        <p class="mt-2 text-base" style="color: var(--ink-muted)">
+          Profesionales verificadas que conocen la pérdida ambigua. Cédula SEP comprobada por Lumos.
+        </p>
+      </header>
+
+      <!-- Filtros -->
+      <section class="mt-5">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">Filtros</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <button class="chip" style="background: var(--ink); color: var(--bg); border: 0">Todos</button>
+          <button class="chip">Adultos</button>
+          <button class="chip">Adolescentes</button>
+          <button class="chip">Niñas y niños</button>
+        </div>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <button class="chip">Presencial</button>
+          <button class="chip">Videollamada</button>
+          <button class="chip">Pro bono</button>
+          <button class="chip">Cuota social</button>
+        </div>
+      </section>
+
+      <!-- Lista de profesionales -->
+      <section class="mt-6 flex flex-col gap-3">
+
+        <!-- Profesional 1 -->
+        <div class="card card-static">
+          <div class="flex items-start gap-3">
+            <div style="width:48px;height:48px;border-radius:999px;background: var(--accent-soft); color: var(--accent-ink); display:flex; align-items:center; justify-content:center; font-weight:600">MG</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <p class="font-medium">Dra. María Guadalupe López</p>
+                <span class="text-xs" style="color: var(--calm)">✓ Verificada</span>
+              </div>
+              <p class="text-sm" style="color: var(--ink-muted)">Tanatóloga · Cédula SEP 7894562</p>
+              <p class="text-sm mt-1" style="color: var(--ink-muted)">Especialidad en infancias y familias de personas desaparecidas.</p>
+              <div class="mt-2 flex flex-wrap gap-1">
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Niñas y niños</span>
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Adolescentes</span>
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Videollamada</span>
+              </div>
+              <p class="mt-3 text-sm"><b>Cuota social</b> desde $200 · Guanajuato</p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2">
+            <button class="btn-secondary">Ver perfil</button>
+            <button class="btn-primary">Pedir cita</button>
+          </div>
+        </div>
+
+        <!-- Profesional 2 -->
+        <div class="card card-static">
+          <div class="flex items-start gap-3">
+            <div style="width:48px;height:48px;border-radius:999px;background:#E8DFF2;color:#4A3370;display:flex;align-items:center;justify-content:center;font-weight:600">AS</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <p class="font-medium">Dr. Andrés Sánchez</p>
+                <span class="text-xs" style="color: var(--calm)">✓ Verificada</span>
+              </div>
+              <p class="text-sm" style="color: var(--ink-muted)">Psicólogo clínico · Cédula SEP 9123456</p>
+              <p class="text-sm mt-1" style="color: var(--ink-muted)">Trauma complejo en adolescentes. Formación en pérdida ambigua (Boss Institute).</p>
+              <div class="mt-2 flex flex-wrap gap-1">
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Adolescentes</span>
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Adultos</span>
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Presencial</span>
+              </div>
+              <p class="mt-3 text-sm"><b>$650</b> sesión · León, GTO</p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2">
+            <button class="btn-secondary">Ver perfil</button>
+            <button class="btn-primary">Pedir cita</button>
+          </div>
+        </div>
+
+        <!-- Profesional 3 - pro bono -->
+        <div class="card card-static">
+          <div class="flex items-start gap-3">
+            <div style="width:48px;height:48px;border-radius:999px;background:#E1EADD;color:#567A4E;display:flex;align-items:center;justify-content:center;font-weight:600">CR</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <p class="font-medium">Claudia Ruiz</p>
+                <span class="text-xs" style="color: var(--calm)">✓ Verificada</span>
+                <span class="chip chip-calm" style="font-size: 11px; padding: 3px 8px">Pro bono</span>
+              </div>
+              <p class="text-sm" style="color: var(--ink-muted)">Psicóloga · Cédula SEP 8456321</p>
+              <p class="text-sm mt-1" style="color: var(--ink-muted)">Convenio con CEAIV · primeras 6 sesiones sin costo para familias de personas desaparecidas.</p>
+              <div class="mt-2 flex flex-wrap gap-1">
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Adultos</span>
+                <span class="chip" style="font-size: 11px; padding: 3px 8px">Videollamada</span>
+              </div>
+              <p class="mt-3 text-sm">Sin costo las primeras 6 sesiones</p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2">
+            <button class="btn-secondary">Ver perfil</button>
+            <button class="btn-primary">Pedir cita</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Nota explicativa -->
+      <section class="mt-8">
+        <div class="card card-static" style="background: transparent; border-style: dashed">
+          <p class="text-sm leading-relaxed">
+            <b>¿Cómo verifica Lumos a las profesionales?</b><br/>
+            Revisamos cédula SEP vigente, formación específica en pérdida ambigua o duelo complicado, y al menos una referencia de una colectiva o institución aliada. La verificación se revisa cada año.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button onclick="location.href='02-home.html'">
+      <svg viewBox="0 0 24 24"><path d="M3 12 12 4l9 8M5 10v10h14V10"/></svg>
+      Inicio
+    </button>
+    <button onclick="location.href='05-escritura-libre.html'">
+      <svg viewBox="0 0 24 24"><path d="M4 20h16M6 16l8-8 4 4-8 8H6v-4z"/></svg>
+      Escritura
+    </button>
+    <button class="active">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+      Acompañamiento
+    </button>
+    <button>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg>
+      Ajustes
+    </button>
+  </nav>
+
+  <div class="dev-bar">
+    <div class="flex items-center gap-2">
+      <span class="dev-label">Mockup v1 · 07 Directorio</span>
+    </div>
+    <div class="flex gap-3">
+      <a href="index.html">Índice</a>
+      <a href="06-triage-crisis.html">‹ Anterior</a>
+      <a href="01-onboarding.html">Reiniciar ›</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

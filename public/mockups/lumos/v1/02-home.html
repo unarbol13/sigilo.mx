@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumos — Home (mockup v1)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+<div class="phone with-bottomnav">
+
+  <button class="crisis-fab" onclick="location.href='06-triage-crisis.html'">Necesito apoyo</button>
+
+  <div class="screen-inner">
+    <div class="px-6">
+      <p class="text-sm" style="color: var(--ink-muted)">Buen día</p>
+      <h1 class="display text-3xl leading-tight mt-1">Lupita</h1>
+
+      <!-- Mensaje de acompañante -->
+      <div class="card card-static mt-5" style="background: #fff">
+        <div class="flex items-center justify-between">
+          <span class="chip">Su acompañante</span>
+          <span class="text-xs" style="color: var(--ink-soft)">Hoy, 9:14</span>
+        </div>
+        <p class="mt-3 text-sm leading-relaxed">"No se preocupe si no abre nada hoy. Solo querría que sepa que preparé algo para cuando pueda."</p>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">— Dra. María Guadalupe López</p>
+      </div>
+
+      <!-- Prescritos -->
+      <section class="mt-7">
+        <div class="flex items-baseline justify-between">
+          <h2 class="display text-xl">Para empezar</h2>
+          <span class="text-xs" style="color: var(--ink-muted)">Prescrito</span>
+        </div>
+        <p class="text-sm mt-1" style="color: var(--ink-muted)">Su acompañante le preparó esto. Sin orden ni prisa.</p>
+
+        <div class="mt-4 flex flex-col gap-3">
+          <button class="card" onclick="location.href='03-modulo-nombrar.html'">
+            <span class="chip">Primer módulo</span>
+            <h3 class="mt-2 font-medium">Nombrar la pérdida ambigua</h3>
+            <p class="mt-1 text-sm" style="color: var(--ink-muted)">Lo que usted siente tiene un nombre. ≈ 8 min.</p>
+          </button>
+          <button class="card" onclick="location.href='04-sostener-adulto.html'">
+            <h3 class="font-medium">Sostener la ambivalencia</h3>
+            <p class="mt-1 text-sm" style="color: var(--ink-muted)">Vivir con la pregunta abierta. ≈ 12 min.</p>
+          </button>
+          <button class="card" onclick="location.href='05-escritura-libre.html'">
+            <h3 class="font-medium">Su espacio de escritura</h3>
+            <p class="mt-1 text-sm" style="color: var(--ink-muted)">Privado, cifrado. Sin prompts.</p>
+          </button>
+        </div>
+      </section>
+
+      <!-- Explorar por estado -->
+      <section class="mt-8">
+        <h2 class="display text-xl">Explorar por lo que siente hoy</h2>
+        <p class="text-sm mt-1" style="color: var(--ink-muted)">Entre al que más resuene. No hay orden correcto.</p>
+
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <button class="card" style="padding: 16px">
+            <div class="dot" style="width: 28px; height: 28px"></div>
+            <h3 class="mt-3 text-sm font-medium">Nombrar</h3>
+          </button>
+          <button class="card" style="padding: 16px; background: var(--accent-soft); border-color: transparent">
+            <div class="dot" style="width: 28px; height: 28px; filter: none; background: #B8842C"></div>
+            <h3 class="mt-3 text-sm font-medium">Sostener la ambivalencia</h3>
+          </button>
+          <button class="card" style="padding: 16px">
+            <div class="dot" style="width: 28px; height: 28px"></div>
+            <h3 class="mt-3 text-sm font-medium">Reconstruir identidad</h3>
+          </button>
+          <button class="card" style="padding: 16px">
+            <div class="dot" style="width: 28px; height: 28px"></div>
+            <h3 class="mt-3 text-sm font-medium">Maestría sin control</h3>
+          </button>
+          <button class="card" style="padding: 16px">
+            <div class="dot" style="width: 28px; height: 28px"></div>
+            <h3 class="mt-3 text-sm font-medium">Revisar el apego</h3>
+          </button>
+          <button class="card" style="padding: 16px">
+            <div class="dot" style="width: 28px; height: 28px"></div>
+            <h3 class="mt-3 text-sm font-medium">Esperanza sin cierre</h3>
+          </button>
+        </div>
+      </section>
+
+      <!-- Familia -->
+      <section class="mt-8">
+        <div class="card card-static">
+          <h3 class="font-medium">También acompaña a</h3>
+          <p class="text-sm mt-1" style="color: var(--ink-muted)">Cada quien tiene su espacio privado.</p>
+          <div class="mt-3 flex gap-2">
+            <span class="chip chip-calm">Sofía, 15</span>
+            <span class="chip chip-calm">Diego, 10</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <button class="active">
+      <svg viewBox="0 0 24 24"><path d="M3 12 12 4l9 8M5 10v10h14V10"/></svg>
+      Inicio
+    </button>
+    <button onclick="location.href='05-escritura-libre.html'">
+      <svg viewBox="0 0 24 24"><path d="M4 20h16M6 16l8-8 4 4-8 8H6v-4z"/></svg>
+      Escritura
+    </button>
+    <button onclick="location.href='07-directorio.html'">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+      Acompañamiento
+    </button>
+    <button>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.5-7l-2 2M6.5 17.5l-2 2m0-15 2 2m11 11 2 2"/></svg>
+      Ajustes
+    </button>
+  </nav>
+
+  <!-- Dev bar -->
+  <div class="dev-bar">
+    <div class="flex items-center gap-2">
+      <span class="dev-label">Mockup v1 · 02 Home</span>
+    </div>
+    <div class="flex gap-3">
+      <a href="index.html">Índice</a>
+      <a href="01-onboarding.html">‹ Anterior</a>
+      <a href="03-modulo-nombrar.html">Siguiente ›</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumos — Nombrar la pérdida ambigua (mockup v1)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+<div class="phone">
+  <button class="crisis-fab" onclick="location.href='06-triage-crisis.html'">Necesito apoyo</button>
+
+  <div class="screen-inner">
+    <div class="topbar">
+      <button class="back" onclick="location.href='02-home.html'">← Inicio</button>
+      <button class="pause" onclick="alert('Se pausa el módulo. Nada se pierde. Puede volver cuando quiera.')">Pausar</button>
+    </div>
+
+    <div class="px-6 pb-10">
+      <!-- Encabezado -->
+      <header class="mt-2">
+        <span class="chip">Módulo 1 · Nombrar</span>
+        <h1 class="display text-3xl leading-tight mt-4">Lo que usted siente tiene un nombre</h1>
+        <p class="mt-3 text-base" style="color: var(--ink-muted)">
+          Se llama <b style="color: var(--ink)">pérdida ambigua</b>. No es igual al duelo por alguien que falleció. Es otra cosa, con su propio nombre y su propia manera.
+        </p>
+      </header>
+
+      <!-- Bloque 1 -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">1 · Qué es</p>
+        <p class="mt-3 leading-relaxed">
+          La pérdida ambigua ocurre cuando una persona que usted quiere está físicamente ausente, pero sigue presente en su mente, en su casa, en la vida de la familia.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          No hay un cuerpo. No hay un lugar. No hay un "ya pasó". La vida queda en pausa y en movimiento al mismo tiempo.
+        </p>
+      </section>
+
+      <!-- Bloque 2 -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">2 · Por qué duele así</p>
+        <p class="mt-3 leading-relaxed">
+          Una investigadora llamada Pauline Boss la describió como la pérdida más difícil que puede vivir una familia. No porque duela más — porque no tiene forma clara. El duelo común tiene rituales, fechas, un antes y un después. La pérdida ambigua no.
+        </p>
+        <div class="card card-static mt-4" style="background: var(--accent-soft); border-color: transparent">
+          <p class="text-sm leading-relaxed" style="color: var(--accent-ink)">
+            "La pérdida ambigua congela el duelo. Sin claridad, no hay cómo empezar, sin cierre, no hay cómo terminar."
+          </p>
+          <p class="text-xs mt-2" style="color: var(--accent-ink); opacity: 0.8">— Pauline Boss, adaptado</p>
+        </div>
+      </section>
+
+      <!-- Bloque 3 -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">3 · Lo que puede estar sintiendo</p>
+        <p class="mt-3 leading-relaxed">
+          Muchas personas nos cuentan cosas parecidas. Usted puede reconocerse en algunas, o en ninguna. Todo está bien.
+        </p>
+        <div class="mt-4 flex flex-col gap-2">
+          <div class="card card-static" style="padding: 14px 18px">
+            <p class="text-sm">Pensar en ella todo el día, y al mismo tiempo intentar seguir con la vida.</p>
+          </div>
+          <div class="card card-static" style="padding: 14px 18px">
+            <p class="text-sm">Sentir enojo con quienes "ya pasaron la página".</p>
+          </div>
+          <div class="card card-static" style="padding: 14px 18px">
+            <p class="text-sm">Tener esperanza y culpa por tenerla.</p>
+          </div>
+          <div class="card card-static" style="padding: 14px 18px">
+            <p class="text-sm">No poder celebrar ni despedir.</p>
+          </div>
+          <div class="card card-static" style="padding: 14px 18px">
+            <p class="text-sm">Sentirse sola aunque haya gente cerca.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bloque 4 — Permisos -->
+      <section class="mt-8">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-soft)">4 · Tres permisos</p>
+        <div class="mt-3 flex flex-col gap-3">
+          <div class="card card-static">
+            <p class="font-medium">Puede seguir teniendo esperanza.</p>
+            <p class="mt-1 text-sm" style="color: var(--ink-muted)">La esperanza no es negación. Es parte de esta pérdida.</p>
+          </div>
+          <div class="card card-static">
+            <p class="font-medium">Puede seguir viviendo.</p>
+            <p class="mt-1 text-sm" style="color: var(--ink-muted)">Reír, trabajar, descansar, no es traición. Es también amor.</p>
+          </div>
+          <div class="card card-static">
+            <p class="font-medium">Puede no tener respuesta.</p>
+            <p class="mt-1 text-sm" style="color: var(--ink-muted)">No hay que decidir hoy si soltar o sostener. Las dos cosas caben.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cierre -->
+      <section class="mt-10">
+        <div class="card card-static" style="background: transparent; border-style: dashed">
+          <p class="text-sm leading-relaxed">
+            Si quiere, puede dejar una palabra o una frase en su espacio de escritura. No tiene que ser nada en especial. Solo algo que diga lo que se llevó de este módulo.
+          </p>
+          <div class="mt-4 flex flex-col gap-2">
+            <button class="btn-primary" onclick="location.href='05-escritura-libre.html'">Abrir mi espacio de escritura</button>
+            <button class="btn-secondary" onclick="location.href='02-home.html'">Volver al inicio</button>
+          </div>
+        </div>
+      </section>
+
+      <p class="mt-8 text-xs text-center" style="color: var(--ink-soft)">
+        Este módulo se puede volver a leer cuantas veces quiera.
+      </p>
+    </div>
+  </div>
+
+  <div class="dev-bar">
+    <div class="flex items-center gap-2">
+      <span class="dev-label">Mockup v1 · 03 Nombrar</span>
+    </div>
+    <div class="flex gap-3">
+      <a href="index.html">Índice</a>
+      <a href="02-home.html">‹ Anterior</a>
+      <a href="04-sostener-adulto.html">Siguiente ›</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

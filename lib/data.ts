@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     status: "development",
     focus: "civictech",
     url: null,
-    mockupsUrl: null,
+    mockupsUrl: "https://sigilo.mx/mockups/lumos/v1/index.html",
     stack: ["Next.js", "Supabase", "IA"],
     highlights: ["Acompañamiento guiado por IA", "Coordinación con CEAIV/PEPNNA", "Seguimiento de casos"],
   },

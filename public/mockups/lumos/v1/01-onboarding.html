@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lumos — Onboarding (mockup v1)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --ink: #1F1B16;
+    --ink-muted: #6B6258;
+    --line: #E8E1D6;
+    --accent: #B8842C;
+    --accent-soft: #F3E6C7;
+    --danger: #A84C3B;
+  }
+  html, body { background: var(--bg); color: var(--ink); }
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+  .display { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif; letter-spacing: -0.01em; }
+  .screen { display: none; min-height: 100dvh; }
+  .screen.active { display: flex; }
+  .dot {
+    width: 64px; height: 64px; border-radius: 999px;
+    background: radial-gradient(circle at 50% 40%, #F6D487 0%, #B8842C 45%, rgba(184,132,44,0) 75%);
+    filter: drop-shadow(0 0 24px rgba(184,132,44,0.35));
+  }
+  .code-input {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.4em; text-align: center;
+    background: #fff; border: 1px solid var(--line);
+  }
+  .code-input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn-primary {
+    background: var(--ink); color: var(--bg);
+    border-radius: 14px; padding: 14px 20px; font-weight: 500;
+    width: 100%;
+  }
+  .btn-primary:disabled { background: #C8C1B6; }
+  .btn-secondary {
+    background: transparent; color: var(--ink-muted);
+    border-radius: 14px; padding: 14px 20px; font-weight: 500;
+    width: 100%;
+  }
+  .card {
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 16px; padding: 20px;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 10px; background: var(--accent-soft); color: #6B4E17;
+    border-radius: 999px; font-size: 12px;
+  }
+  .dev-bar {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    background: rgba(31,27,22,0.96); color: #fff;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 12px; font-size: 12px; z-index: 50;
+  }
+  .dev-bar button { background: #fff; color: #1F1B16; border-radius: 8px; padding: 6px 10px; font-weight: 500; }
+  .dev-bar button:disabled { opacity: 0.4; }
+  .step-dot { width: 6px; height: 6px; border-radius: 999px; background: #C8C1B6; }
+  .step-dot.done { background: var(--accent); }
+
+  /* Phone frame on desktop */
+  @media (min-width: 640px) {
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #EFEAE1; padding: 24px; }
+    .phone {
+      width: 390px; height: 844px; overflow: hidden;
+      border-radius: 42px; background: var(--bg);
+      box-shadow: 0 20px 60px rgba(31,27,22,0.18), inset 0 0 0 10px #1F1B16;
+      position: relative;
+    }
+    .phone::before {
+      content: ""; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 30px; background: #1F1B16; border-radius: 999px; z-index: 10;
+    }
+    .screen { height: 100%; overflow-y: auto; padding-top: 56px; padding-bottom: 88px; }
+    .dev-bar { position: absolute; border-radius: 0 0 32px 32px; }
+  }
+  @media (max-width: 639px) {
+    .phone { min-height: 100dvh; }
+    .screen { padding-top: env(safe-area-inset-top, 20px); padding-bottom: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- 1. SPLASH -->
+  <section class="screen active flex-col justify-between px-6" data-step="1">
+    <div></div>
+    <div class="flex flex-col items-center text-center gap-6">
+      <div class="dot"></div>
+      <div>
+        <h1 class="display text-4xl leading-tight">Lumos</h1>
+        <p class="mt-3 text-base" style="color: var(--ink-muted)">
+          Un espacio para sostener<br/>lo que no cierra.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <button class="btn-primary" onclick="go(2)">Comenzar</button>
+      <p class="text-xs text-center" style="color: var(--ink-muted)">
+        Esta app funciona sin internet para lo esencial.<br/>Sus datos quedan cifrados en este dispositivo.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. RUTA -->
+  <section class="screen flex-col px-6" data-step="2">
+    <header class="pt-2 pb-4">
+      <button onclick="go(1)" class="text-sm" style="color: var(--ink-muted)">← Atrás</button>
+    </header>
+    <div class="flex-1 flex flex-col gap-6">
+      <div>
+        <h2 class="display text-2xl leading-snug">¿Cómo llega a Lumos hoy?</h2>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">
+          Lumos se usa mejor acompañada de una profesional. Si ya tiene quien le acompaña, ella le dio un código.
+        </p>
+      </div>
+
+      <button class="card text-left" onclick="go(3)">
+        <span class="chip">Recomendado</span>
+        <h3 class="mt-3 font-medium">Tengo un código de mi acompañante</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">
+          Una psicóloga, tanatóloga o una colectiva me compartió un código.
+        </p>
+      </button>
+
+      <button class="card text-left opacity-80" onclick="showOrganicNote()">
+        <h3 class="font-medium">Llegué por mi cuenta</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">
+          Todavía no tengo acompañamiento profesional.
+        </p>
+      </button>
+
+      <p id="organic-note" class="hidden text-xs rounded-lg p-3" style="background: var(--accent-soft); color: #6B4E17">
+        En esta versión de Lumos la entrada sin acompañamiento aún no está habilitada. Le podemos ayudar a encontrar una profesional verificada.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. CÓDIGO -->
+  <section class="screen flex-col px-6" data-step="3">
+    <header class="pt-2 pb-4">
+      <button onclick="go(2)" class="text-sm" style="color: var(--ink-muted)">← Atrás</button>
+    </header>
+    <div class="flex-1 flex flex-col gap-6">
+      <div>
+        <h2 class="display text-2xl leading-snug">Escriba el código que le compartió su acompañante</h2>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">
+          Son 6 caracteres. No distingue mayúsculas.
+        </p>
+      </div>
+      <input
+        type="text"
+        maxlength="6"
+        inputmode="text"
+        autocapitalize="characters"
+        placeholder="— — — — — —"
+        class="code-input rounded-xl py-5 text-2xl"
+        id="code"
+        oninput="validateCode()"
+      />
+      <p class="text-xs" style="color: var(--ink-muted)">
+        Si su acompañante aún no le ha dado un código, puede pedírselo en su próxima sesión.
+      </p>
+    </div>
+    <div class="pb-4">
+      <button id="code-continue" class="btn-primary" disabled onclick="go(4)">Continuar</button>
+    </div>
+  </section>
+
+  <!-- 4. CONFIRMACIÓN -->
+  <section class="screen flex-col px-6" data-step="4">
+    <header class="pt-2 pb-4"></header>
+    <div class="flex-1 flex flex-col items-center justify-center text-center gap-6">
+      <div class="dot" style="width:48px;height:48px"></div>
+      <div>
+        <h2 class="display text-2xl leading-snug">Su acompañante la está esperando</h2>
+        <p class="mt-3 text-sm" style="color: var(--ink-muted)">
+          Este espacio fue activado por
+        </p>
+        <p class="mt-1 font-medium">Dra. María Guadalupe López<br/><span class="text-sm font-normal" style="color: var(--ink-muted)">Tanatóloga — Cédula SEP 7894562</span></p>
+      </div>
+      <div class="card w-full text-left">
+        <p class="text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Mensaje de su acompañante</p>
+        <p class="mt-2 text-sm leading-relaxed">"Hola. Preparé para usted tres módulos para comenzar. No hay prisa — ábralos cuando sienta que puede. Hablamos el martes."</p>
+      </div>
+    </div>
+    <div class="pb-4">
+      <button class="btn-primary" onclick="go(5)">Continuar</button>
+    </div>
+  </section>
+
+  <!-- 5. ¿QUIÉN VA A USAR? -->
+  <section class="screen flex-col px-6" data-step="5">
+    <header class="pt-2 pb-4">
+      <button onclick="go(4)" class="text-sm" style="color: var(--ink-muted)">← Atrás</button>
+    </header>
+    <div class="flex-1 flex flex-col gap-4">
+      <div>
+        <h2 class="display text-2xl leading-snug">¿Quién va a usar Lumos?</h2>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">
+          El contenido se adapta según a quién acompaña. Puede agregar más personas de la familia después.
+        </p>
+      </div>
+
+      <button class="card text-left" onclick="selectAudience('adulto')">
+        <h3 class="font-medium">Usted (una persona adulta)</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">18 años o más.</p>
+      </button>
+
+      <button class="card text-left" onclick="selectAudience('adolescente')">
+        <h3 class="font-medium">Una adolescente de 13 a 17 años</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">Requiere su consentimiento como tutor y el asentimiento de la adolescente.</p>
+      </button>
+
+      <button class="card text-left" onclick="selectAudience('nino')">
+        <h3 class="font-medium">Una niña o niño de 8 a 12 años</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">Requiere su consentimiento como tutor y el asentimiento del niño o niña.</p>
+      </button>
+
+      <button class="card text-left" onclick="selectAudience('familia')">
+        <h3 class="font-medium">Varias personas de la familia</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">Cada quien tendrá un espacio privado.</p>
+      </button>
+    </div>
+  </section>
+
+  <!-- 6A. TUTOR (solo si menor) -->
+  <section class="screen flex-col px-6" data-step="6a">
+    <header class="pt-2 pb-4">
+      <button onclick="go(5)" class="text-sm" style="color: var(--ink-muted)">← Atrás</button>
+    </header>
+    <div class="flex-1 flex flex-col gap-5">
+      <div>
+        <h2 class="display text-2xl leading-snug">Consentimiento de tutor</h2>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">
+          Usted es responsable legal de la niña, niño o adolescente. Lea cada punto y marque si está de acuerdo.
+        </p>
+      </div>
+      <label class="card flex gap-3 cursor-pointer">
+        <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
+        <span class="text-sm">Autorizo que use Lumos con el contenido adaptado a su edad.</span>
+      </label>
+      <label class="card flex gap-3 cursor-pointer">
+        <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
+        <span class="text-sm">Entiendo que su escritura dentro de la app es privada y cifrada — ni yo ni Lumos podemos leerla.</span>
+      </label>
+      <label class="card flex gap-3 cursor-pointer">
+        <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
+        <span class="text-sm">Entiendo que si la app detecta señales de riesgo grave, se me notificará y se contactará a la profesional.</span>
+      </label>
+      <label class="card flex gap-3 cursor-pointer">
+        <input type="checkbox" class="mt-1 accent-black" onchange="checkTutor()"/>
+        <span class="text-sm">Puedo retirar este consentimiento y eliminar todos los datos en cualquier momento.</span>
+      </label>
+    </div>
+    <div class="pb-4">
+      <button id="tutor-continue" class="btn-primary" disabled onclick="go('6b')">Continuar</button>
+    </div>
+  </section>
+
+  <!-- 6B. ASENTIMIENTO DEL MENOR -->
+  <section class="screen flex-col px-6" data-step="6b">
+    <header class="pt-2 pb-4">
+      <button onclick="go('6a')" class="text-sm" style="color: var(--ink-muted)">← Atrás</button>
+    </header>
+    <div class="flex-1 flex flex-col gap-5">
+      <div>
+        <span class="chip">Esta parte la lee el niño, niña o adolescente</span>
+        <h2 class="display text-2xl leading-snug mt-3">Esto es tuyo</h2>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">
+          Lumos es un espacio para ti. Antes de entrar, queremos que sepas esto:
+        </p>
+      </div>
+      <div class="card">
+        <ul class="space-y-3 text-sm">
+          <li>• Lo que escribas aquí es <b>tuyo</b>. Nadie más lo lee.</li>
+          <li>• Puedes salir cuando quieras. No pasa nada.</li>
+          <li>• Si algo te hace sentir mal, pausa. Hay un botón para eso.</li>
+          <li>• Si cuentas algo que nos preocupa mucho, te vamos a avisar antes de decirle a alguien.</li>
+        </ul>
+      </div>
+      <p class="text-sm">¿Quieres usar Lumos?</p>
+      <div class="grid grid-cols-2 gap-3">
+        <button class="btn-secondary" style="background: #fff; border: 1px solid var(--line); color: var(--ink)" onclick="alert('Sin problema. Puede volver cuando quiera.')">Ahora no</button>
+        <button class="btn-primary" onclick="go(7)">Sí, quiero</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PERFIL MÍNIMO -->
+  <section class="screen flex-col px-6" data-step="7">
+    <header class="pt-2 pb-4">
+      <button onclick="goBackFromProfile()" class="text-sm" style="color: var(--ink-muted)">← Atrás</button>
+    </header>
+    <div class="flex-1 flex flex-col gap-5">
+      <div>
+        <h2 class="display text-2xl leading-snug">Cómo le llamamos aquí</h2>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">
+          No necesitamos su nombre real. Elija cómo quiere que Lumos se dirija a usted.
+        </p>
+      </div>
+      <div>
+        <label class="text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Apodo o primer nombre</label>
+        <input type="text" placeholder="Ej. Lupita, Ma., o como prefiera" class="w-full mt-2 rounded-xl border px-4 py-3 bg-white" style="border-color: var(--line)"/>
+      </div>
+      <div>
+        <label class="text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Si quiere compartir — puede saltarlo</label>
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <button class="card text-sm py-3">Madre</button>
+          <button class="card text-sm py-3">Padre</button>
+          <button class="card text-sm py-3">Hija o hijo</button>
+          <button class="card text-sm py-3">Hermana / hermano</button>
+          <button class="card text-sm py-3">Pareja</button>
+          <button class="card text-sm py-3">Otro vínculo</button>
+        </div>
+      </div>
+    </div>
+    <div class="pb-4 flex gap-3">
+      <button class="btn-secondary" style="background: #fff; border: 1px solid var(--line); color: var(--ink)" onclick="go(8)">Saltar</button>
+      <button class="btn-primary" onclick="go(8)">Continuar</button>
+    </div>
+  </section>
+
+  <!-- 8. SEGURIDAD ESENCIAL -->
+  <section class="screen flex-col px-6" data-step="8">
+    <header class="pt-2 pb-4">
+      <button onclick="go(7)" class="text-sm" style="color: var(--ink-muted)">← Atrás</button>
+    </header>
+    <div class="flex-1 flex flex-col gap-4">
+      <div>
+        <h2 class="display text-2xl leading-snug">Tres cosas antes de entrar</h2>
+        <p class="mt-2 text-sm" style="color: var(--ink-muted)">Seguridad y privacidad son lo primero en Lumos.</p>
+      </div>
+      <div class="card">
+        <h3 class="font-medium">Lo que escribe es suyo</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">Su escritura libre se guarda cifrada en este dispositivo. Ni Lumos ni su acompañante pueden leerla.</p>
+      </div>
+      <div class="card">
+        <h3 class="font-medium">Pausar siempre es una opción</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">En cada módulo hay un botón para salir. Nada se pierde. Puede volver en otro momento.</p>
+      </div>
+      <div class="card">
+        <h3 class="font-medium">Borrado de emergencia</h3>
+        <p class="mt-1 text-sm" style="color: var(--ink-muted)">Si necesita eliminar todo de golpe, un gesto lo hace. Le enseñamos cómo en el primer uso.</p>
+      </div>
+    </div>
+    <div class="pb-4">
+      <button class="btn-primary" onclick="go(9)">Entendido</button>
+    </div>
+  </section>
+
+  <!-- 9. LISTO -->
+  <section class="screen flex-col px-6" data-step="9">
+    <header class="pt-2 pb-4"></header>
+    <div class="flex-1 flex flex-col items-center justify-center text-center gap-6">
+      <div class="dot"></div>
+      <div>
+        <h2 class="display text-2xl leading-snug">Su acompañante preparó tres módulos para empezar</h2>
+        <p class="mt-3 text-sm" style="color: var(--ink-muted)">Puede abrirlos cuando quiera. No hay orden obligatorio.</p>
+      </div>
+      <div class="w-full flex flex-col gap-3">
+        <div class="card text-left">
+          <span class="chip">Prescrito</span>
+          <h3 class="mt-2 font-medium">Nombrar la pérdida ambigua</h3>
+          <p class="mt-1 text-sm" style="color: var(--ink-muted)">Lo que usted siente tiene un nombre.</p>
+        </div>
+        <div class="card text-left">
+          <span class="chip">Prescrito</span>
+          <h3 class="mt-2 font-medium">Sostener la ambivalencia</h3>
+          <p class="mt-1 text-sm" style="color: var(--ink-muted)">Vivir con la pregunta abierta.</p>
+        </div>
+        <div class="card text-left">
+          <span class="chip">Prescrito</span>
+          <h3 class="mt-2 font-medium">Escritura libre</h3>
+          <p class="mt-1 text-sm" style="color: var(--ink-muted)">Un espacio privado, sin prompts. Solo suyo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pb-4">
+      <button class="btn-primary" onclick="alert('Fin del mockup de onboarding v1. La siguiente ronda construye el Home.')">Entrar a mi espacio</button>
+    </div>
+  </section>
+
+  <!-- DEV BAR (solo para revisión del mockup) -->
+  <div class="dev-bar">
+    <div class="flex items-center gap-2">
+      <span class="opacity-60">Mockup v1</span>
+      <span id="step-indicator">1 / 9</span>
+    </div>
+    <div class="flex gap-2">
+      <button id="prev-btn" onclick="prev()">‹</button>
+      <button id="next-btn" onclick="next()">›</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const order = [1, 2, 3, 4, 5, '6a', '6b', 7, 8, 9];
+  let idx = 0;
+  let audience = null;
+
+  function show(step) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const el = document.querySelector(`[data-step="${step}"]`);
+    if (el) el.classList.add('active');
+    idx = order.indexOf(step);
+    document.getElementById('step-indicator').textContent = (idx + 1) + ' / ' + order.length;
+    document.getElementById('prev-btn').disabled = idx === 0;
+    document.getElementById('next-btn').disabled = idx === order.length - 1;
+    window.scrollTo(0, 0);
+    const active = document.querySelector('.screen.active');
+    if (active) active.scrollTo(0, 0);
+  }
+
+  function go(step) { show(step); }
+
+  function next() {
+    if (idx < order.length - 1) {
+      let nextStep = order[idx + 1];
+      // Saltar asentimiento/tutor si adulto o familia
+      if ((audience === 'adulto' || audience === 'familia') && (nextStep === '6a' || nextStep === '6b')) {
+        show(7);
+        return;
+      }
+      show(nextStep);
+    }
+  }
+  function prev() {
+    if (idx > 0) {
+      let prevStep = order[idx - 1];
+      if ((audience === 'adulto' || audience === 'familia') && (prevStep === '6a' || prevStep === '6b')) {
+        show(5);
+        return;
+      }
+      show(prevStep);
+    }
+  }
+
+  function selectAudience(a) {
+    audience = a;
+    if (a === 'adulto' || a === 'familia') {
+      show(7);
+    } else {
+      show('6a');
+    }
+  }
+
+  function goBackFromProfile() {
+    if (audience === 'adolescente' || audience === 'nino') show('6b');
+    else show(5);
+  }
+
+  function validateCode() {
+    const v = document.getElementById('code').value.trim();
+    document.getElementById('code-continue').disabled = v.length < 6;
+  }
+
+  function checkTutor() {
+    const boxes = document.querySelectorAll('[data-step="6a"] input[type=checkbox]');
+    const all = Array.from(boxes).every(b => b.checked);
+    document.getElementById('tutor-continue').disabled = !all;
+  }
+
+  function showOrganicNote() {
+    document.getElementById('organic-note').classList.remove('hidden');
+  }
+</script>
+</body>
+</html>
