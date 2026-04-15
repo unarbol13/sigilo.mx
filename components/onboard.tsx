@@ -61,6 +61,8 @@ function OptionButton({
 export function Onboard() {
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>({
     businessType: null,
     need: null,
@@ -72,10 +74,44 @@ export function Onboard() {
   const goNext = () => setStep((s) => Math.min(5, s + 1) as Step);
   const goBack = () => setStep((s) => Math.max(1, s - 1) as Step);
 
-  const handleSubmit = () => {
-    // TODO: send to Supabase or API
-    console.log("Onboard data:", data);
-    setSubmitted(true);
+  const isValidContact = (value: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s\-+()]{10,}$/;
+    return emailRegex.test(value) || phoneRegex.test(value);
+  };
+
+  const handleSubmit = async () => {
+    if (!isValidContact(data.contact)) {
+      setError("Ingresa un correo electrónico o número de teléfono válido.");
+      return;
+    }
+    setError(null);
+    setSending(true);
+    try {
+      const message = [
+        `Tipo de negocio: ${BUSINESS_TYPES.find((b) => b.id === data.businessType)?.label || "—"}`,
+        `Necesidad: ${NEEDS.find((n) => n.id === data.need)?.label || "—"}`,
+        `Timeline: ${TIMELINES.find((t) => t.id === data.timeline)?.label || "—"}`,
+        `Nombre: ${data.name}`,
+        `Contacto: ${data.contact}`,
+      ].join("\n");
+
+      const res = await fetch("https://sigilo-contact.lacasaverdeac.workers.dev", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: "contacto@sigilo.mx",
+          message,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setError("No se pudo enviar. Intenta por WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const progress = ((step - 1) / 4) * 100;
@@ -329,7 +365,14 @@ export function Onboard() {
 
             {step === 4 && (
               <button
-                onClick={goNext}
+                onClick={() => {
+                  if (!isValidContact(data.contact)) {
+                    setError("Ingresa un correo electrónico o número de teléfono válido.");
+                    return;
+                  }
+                  setError(null);
+                  goNext();
+                }}
                 disabled={!data.name || !data.contact}
                 className="text-sm font-medium text-background bg-accent px-6 py-2.5 rounded-lg hover:bg-accent-hover transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
               >
@@ -340,12 +383,16 @@ export function Onboard() {
             {step === 5 && (
               <button
                 onClick={handleSubmit}
-                className="text-sm font-medium text-background bg-accent px-6 py-2.5 rounded-lg hover:bg-accent-hover transition-colors"
+                disabled={sending}
+                className="text-sm font-medium text-background bg-accent px-6 py-2.5 rounded-lg hover:bg-accent-hover transition-colors disabled:opacity-50"
               >
-                Enviar
+                {sending ? "Enviando..." : "Enviar"}
               </button>
             )}
           </div>
+          {error && (
+            <p className="text-sm text-red-400 mt-3 text-center">{error}</p>
+          )}
         </div>
 
         {/* Alternative: just chat */}

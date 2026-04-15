@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTilt } from "@/lib/use-tilt";
 
 export function Hero() {
+  const logoTilt = useTilt(12);
   return (
     <section className="min-h-screen flex items-center justify-center px-6 pt-16">
       <div className="max-w-4xl mx-auto text-center">
@@ -12,14 +14,22 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Image
-            src="/sigilo_logo_oscuro.png"
-            alt="Sigilo"
-            width={360}
-            height={360}
-            className="mx-auto mb-8"
-            priority
-          />
+          <div
+            ref={logoTilt.ref}
+            onMouseMove={logoTilt.onMouseMove}
+            onMouseLeave={logoTilt.onMouseLeave}
+            className="inline-block will-change-transform"
+            style={{ transition: "transform 0.15s ease-out" }}
+          >
+            <Image
+              src="/sigilo_logo_oscuro.png"
+              alt="Sigilo"
+              width={360}
+              height={360}
+              className="mx-auto mb-8"
+              priority
+            />
+          </div>
           <p className="font-display text-sm text-muted tracking-wider uppercase">
             Software & Sistemas de gestión
           </p>

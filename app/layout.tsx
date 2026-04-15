@@ -19,6 +19,10 @@ const michroma = Michroma({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   title: "Sigilo — Software a la medida",
   description:
     "Diseñamos y construimos software a la medida. Apps móviles, sistemas de gestión, automatización y tecnología cívica.",

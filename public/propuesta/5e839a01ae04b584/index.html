@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta — Sistema de Gestión Integral · Vita Bajío</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwindcss.config = {
+      theme: {
+        extend: {
+          colors: {
+            vb: {
+              navy: '#003c6e',
+              'navy-dark': '#002a4f',
+              'navy-light': '#185080',
+              gold: '#ffca1a',
+              'gold-soft': '#fff3c4',
+              surface: '#f7f8fa',
+              border: '#e2e5ea',
+              muted: '#6b7280',
+              text: '#1f2937',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .logo-placeholder {
+      border: 2px dashed #c7cdd4;
+      background: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .mockup-screen {
+      background: #ffffff;
+      border: 1px solid #e2e5ea;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .mockup-titlebar {
+      background: #003c6e;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sidebar-item { padding: 8px 14px; font-size: 13px; border-radius: 4px; }
+    .sidebar-item.active { background: rgba(255,202,26,0.12); color: #ffca1a; font-weight: 600; }
+    .sidebar-item:not(.active) { color: rgba(255,255,255,0.55); }
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e2e5ea;
+      border-radius: 6px;
+      padding: 16px 20px;
+    }
+    .kanban-col { background: #f7f8fa; border-radius: 6px; padding: 12px; min-height: 200px; }
+    .kanban-card {
+      background: #fff;
+      border: 1px solid #e2e5ea;
+      border-radius: 4px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .table-row:nth-child(even) { background: #f9fafb; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll table { min-width: 640px; }
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body class="bg-white text-vb-text">
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- HEADER                                  -->
+  <!-- ════════════════════════════════════════ -->
+  <header style="background:#003c6e;color:#ffffff;">
+    <!-- Top bar -->
+    <div class="max-w-6xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <img src="https://vitabajio.com/logoVB512.png" alt="Vita Bajío" class="h-14 w-14 object-contain" />
+        <div class="h-10 w-px" style="background:rgba(255,255,255,0.15);"></div>
+        <div>
+          <p class="text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.4);">Para</p>
+          <p class="text-sm font-semibold">Vita Bajío S.A. de C.V.</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.5);">Salamanca, Guanajuato</p>
+        </div>
+      </div>
+      <div class="text-right hidden sm:block">
+        <p class="text-[10px] uppercase tracking-widest" style="color:rgba(255,255,255,0.3);">Folio</p>
+        <p class="text-lg font-bold tracking-tight" style="color:#ffca1a;">COT-0089</p>
+        <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.4);">26 de marzo de 2026</p>
+      </div>
+    </div>
+    <!-- Divider -->
+    <div class="max-w-6xl mx-auto px-6"><div class="h-px" style="background:rgba(255,255,255,0.1);"></div></div>
+    <!-- Title + contact -->
+    <div class="max-w-6xl mx-auto px-6 py-6 flex items-end justify-between">
+      <div>
+        <p class="text-xs uppercase tracking-widest mb-2" style="color:rgba(255,255,255,0.4);">Propuesta Técnica y Comercial</p>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">Sistema de Gestión Integral</h1>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,0.5);">Ventas · Inventario · Operación · Reportes</p>
+      </div>
+      <div class="text-right hidden sm:block">
+        <p class="text-[10px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.3);">Preparado por</p>
+        <p class="text-sm font-semibold">Omar Rocha</p>
+        <p class="text-xs" style="color:rgba(255,255,255,0.5);">contacto@prisma360solutions.com</p>
+        <p class="text-xs" style="color:rgba(255,255,255,0.5);">464 193 6003</p>
+        <a href="https://prisma360solutions.com/portafolio/personal/omar" class="text-[10px] hover:opacity-80 transition-opacity mt-1 inline-block" style="color:rgba(255,255,255,0.3);">prisma360solutions.com/portafolio/personal/omar</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- INTRO                                   -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-bold text-vb-navy mb-4">Contexto</h2>
+      <p class="text-base text-vb-muted leading-relaxed mb-4">
+        Vita Bajío lleva más de 40 años en la industria del renovado y venta de llantas,
+        atendiendo flotillas de transporte en la región del Bajío como parte de la red Bandag.
+      </p>
+      <p class="text-base text-vb-muted leading-relaxed mb-4">
+        Esta propuesta presenta el diseño de un sistema a la medida que centraliza
+        la operación comercial, el control de inventario, el seguimiento de clientes
+        y la gestión interna en una sola herramienta — construida específicamente para
+        cómo opera Vita Bajío hoy.
+      </p>
+      <p class="text-base text-vb-muted leading-relaxed">
+        No es un software genérico que se adapta. Es una herramienta que se diseña
+        desde su operación.
+      </p>
+    </div>
+
+    <!-- Marcas -->
+    <div class="flex items-center gap-6 mt-10 opacity-60">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Bridgestone_201x_logo.svg" alt="Bridgestone" class="h-6 object-contain" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pirelli_-_logo_full_%28Italy%2C_1997%29.svg" alt="Pirelli" class="h-5 object-contain" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Continental_logo.svg" alt="Continental" class="h-5 object-contain" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Michelin_Wordmark.svg" alt="Michelin" class="h-4 object-contain" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Firestone.svg" alt="Firestone" class="h-4 object-contain" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/BFGoodrich_logo.svg" alt="BFGoodrich" class="h-4 object-contain" />
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-6"><hr class="border-vb-border" /></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- FASE 1                                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="phase-badge bg-vb-navy text-white">Fase 1</span>
+      <span class="text-xs text-vb-muted">Semanas 1–3</span>
+      <span class="text-[10px] text-vb-muted border border-vb-border rounded-full px-2.5 py-0.5 ml-auto">Incluido en ambos paquetes</span>
+    </div>
+    <h2 class="text-2xl font-bold text-vb-navy mb-1">Ventas, Clientes y Cotizaciones</h2>
+    <p class="text-sm text-vb-muted mb-10">Dashboard · Proceso de ventas · Cotizaciones · Reportes</p>
+
+    <!-- MOCKUP 1: Dashboard -->
+    <div class="mb-12">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 1 — Dashboard principal</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Vita Bajío</span>
+          </div>
+          <div class="flex items-center gap-4 text-white/50 text-xs">
+            <span>Admin</span>
+            <div class="w-7 h-7 rounded-full bg-white/10"></div>
+          </div>
+        </div>
+        <div class="flex">
+          <!-- Sidebar -->
+          <div class="w-48 bg-vb-navy-dark min-h-[520px] py-4 px-2 flex-shrink-0 hidden md:block">
+            <div class="sidebar-item active">Dashboard</div>
+            <div class="sidebar-item">Clientes</div>
+            <div class="sidebar-item">Proceso de ventas</div>
+            <div class="sidebar-item">Cotizaciones</div>
+            <div class="sidebar-item">Ventas</div>
+            <div class="sidebar-item mt-4" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">Inventario</div>
+            <div class="sidebar-item">Cascos</div>
+            <div class="sidebar-item mt-4" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">Combustible</div>
+            <div class="sidebar-item">Evaluaciones</div>
+            <div class="sidebar-item mt-4" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">Reportes</div>
+          </div>
+          <!-- Main -->
+          <div class="flex-1 p-6 bg-vb-surface">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h3 class="text-lg font-bold text-vb-navy">Buen día, Admin</h3>
+                <p class="text-xs text-vb-muted">Martes 25 de marzo, 2026</p>
+              </div>
+              <span class="text-xs text-vb-muted bg-white border border-vb-border rounded px-3 py-1.5">Reporte diario ↓</span>
+            </div>
+
+            <!-- Stats row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div class="stat-card">
+                <p class="text-xs text-vb-muted mb-1">Ventas hoy</p>
+                <p class="text-2xl font-bold text-vb-navy">$147,320</p>
+                <p class="text-[10px] text-green-600 mt-1">+12% vs ayer</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-xs text-vb-muted mb-1">Cotizaciones abiertas</p>
+                <p class="text-2xl font-bold text-vb-navy">8</p>
+                <p class="text-[10px] text-vb-muted mt-1">3 vencen esta semana</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-xs text-vb-muted mb-1">Cascos recolectados</p>
+                <p class="text-2xl font-bold text-vb-navy">23</p>
+                <p class="text-[10px] text-vb-muted mt-1">hoy · 4 clientes</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-xs text-vb-muted mb-1">Inventario bajo</p>
+                <p class="text-2xl font-bold text-amber-600">5</p>
+                <p class="text-[10px] text-amber-600 mt-1">productos bajo mínimo</p>
+              </div>
+            </div>
+
+            <!-- Two column: recent activity + top clients -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-white border border-vb-border rounded-md p-4">
+                <p class="text-xs font-semibold text-vb-navy mb-3 uppercase tracking-wider">Actividad reciente</p>
+                <div class="space-y-3 text-xs text-vb-muted">
+                  <div class="flex justify-between"><span>Cotización #0342 — Transportes García</span><span class="text-vb-navy font-medium">$86,400</span></div>
+                  <div class="flex justify-between"><span>Venta cerrada — Fletes del Bajío</span><span class="text-green-600 font-medium">$124,000</span></div>
+                  <div class="flex justify-between"><span>Nuevo prospecto — Logística MVM</span><span class="text-vb-navy-light font-medium">Acercamiento</span></div>
+                  <div class="flex justify-between"><span>Recolección cascos — Autotrans SAL</span><span class="text-vb-muted">12 cascos</span></div>
+                  <div class="flex justify-between"><span>Carga combustible — Unidad 07</span><span class="text-vb-muted">45L · $23.50/L</span></div>
+                </div>
+              </div>
+              <div class="bg-white border border-vb-border rounded-md p-4">
+                <p class="text-xs font-semibold text-vb-navy mb-3 uppercase tracking-wider">Clientes con mayor volumen (mes)</p>
+                <div class="space-y-2.5">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="text-vb-text font-medium">Transportes García</span>
+                    <div class="flex items-center gap-2">
+                      <div class="w-24 h-1.5 bg-vb-surface rounded-full overflow-hidden"><div class="h-full bg-vb-navy rounded-full" style="width:85%"></div></div>
+                      <span class="text-vb-muted w-16 text-right">$342,100</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="text-vb-text font-medium">Fletes del Bajío</span>
+                    <div class="flex items-center gap-2">
+                      <div class="w-24 h-1.5 bg-vb-surface rounded-full overflow-hidden"><div class="h-full bg-vb-navy rounded-full" style="width:68%"></div></div>
+                      <span class="text-vb-muted w-16 text-right">$271,800</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="text-vb-text font-medium">Autotrans SAL</span>
+                    <div class="flex items-center gap-2">
+                      <div class="w-24 h-1.5 bg-vb-surface rounded-full overflow-hidden"><div class="h-full bg-vb-navy rounded-full" style="width:52%"></div></div>
+                      <span class="text-vb-muted w-16 text-right">$208,500</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="text-vb-text font-medium">Logística MVM</span>
+                    <div class="flex items-center gap-2">
+                      <div class="w-24 h-1.5 bg-vb-surface rounded-full overflow-hidden"><div class="h-full bg-vb-navy rounded-full" style="width:35%"></div></div>
+                      <span class="text-vb-muted w-16 text-right">$139,200</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOCKUP 2: Proceso de ventas -->
+    <div class="mb-12">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 2 — Proceso de ventas</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Proceso de ventas</span>
+          </div>
+          <span class="text-white/40 text-xs">9 oportunidades activas</span>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Acercamiento -->
+            <div class="kanban-col">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-vb-navy uppercase tracking-wider">Acercamiento</span>
+                <span class="text-[10px] bg-blue-50 text-blue-700 rounded-full px-2 py-0.5 font-semibold">3</span>
+              </div>
+              <div class="kanban-card">
+                <p class="font-medium text-vb-navy">Logística MVM</p>
+                <p class="text-vb-muted text-[11px] mt-1">Flotilla 24 unidades · Renovado</p>
+                <p class="text-[10px] text-vb-muted mt-2">Hace 2 días</p>
+              </div>
+              <div class="kanban-card">
+                <p class="font-medium text-vb-navy">Grúas Celaya</p>
+                <p class="text-vb-muted text-[11px] mt-1">8 unidades · Llantas nuevas</p>
+                <p class="text-[10px] text-vb-muted mt-2">Hace 5 días</p>
+              </div>
+              <div class="kanban-card">
+                <p class="font-medium text-vb-navy">Materiales del Centro</p>
+                <p class="text-vb-muted text-[11px] mt-1">3 unidades · Mixto</p>
+                <p class="text-[10px] text-vb-muted mt-2">Hoy</p>
+              </div>
+            </div>
+            <!-- Cotización -->
+            <div class="kanban-col">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-vb-navy uppercase tracking-wider">Cotización</span>
+                <span class="text-[10px] bg-amber-50 text-amber-700 rounded-full px-2 py-0.5 font-semibold">2</span>
+              </div>
+              <div class="kanban-card border-l-2 border-l-amber-400">
+                <p class="font-medium text-vb-navy">Transportes Salmantinos</p>
+                <p class="text-vb-muted text-[11px] mt-1">12 llantas renovadas Bandag</p>
+                <p class="text-xs font-semibold text-vb-navy mt-2">$67,200</p>
+                <p class="text-[10px] text-amber-600 mt-1">Vence en 3 días</p>
+              </div>
+              <div class="kanban-card border-l-2 border-l-amber-400">
+                <p class="font-medium text-vb-navy">Distribuidora León</p>
+                <p class="text-vb-muted text-[11px] mt-1">20 llantas nuevas china</p>
+                <p class="text-xs font-semibold text-vb-navy mt-2">$44,000</p>
+                <p class="text-[10px] text-vb-muted mt-1">Vence en 8 días</p>
+              </div>
+            </div>
+            <!-- Negociación -->
+            <div class="kanban-col">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-vb-navy uppercase tracking-wider">Negociación</span>
+                <span class="text-[10px] bg-purple-50 text-purple-700 rounded-full px-2 py-0.5 font-semibold">2</span>
+              </div>
+              <div class="kanban-card border-l-2 border-l-purple-400">
+                <p class="font-medium text-vb-navy">Autotrans SAL</p>
+                <p class="text-vb-muted text-[11px] mt-1">Programa anual de renovado</p>
+                <p class="text-xs font-semibold text-vb-navy mt-2">$480,000</p>
+                <p class="text-[10px] text-vb-muted mt-1">Negociando plazo de pago</p>
+              </div>
+              <div class="kanban-card border-l-2 border-l-purple-400">
+                <p class="font-medium text-vb-navy">Fletes del Bajío</p>
+                <p class="text-vb-muted text-[11px] mt-1">8 llantas nuevas línea + 16 renovado</p>
+                <p class="text-xs font-semibold text-vb-navy mt-2">$198,400</p>
+                <p class="text-[10px] text-vb-muted mt-1">Esperando aprobación gerencia</p>
+              </div>
+            </div>
+            <!-- Cerrado -->
+            <div class="kanban-col">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-vb-navy uppercase tracking-wider">Cerrado</span>
+                <span class="text-[10px] bg-green-50 text-green-700 rounded-full px-2 py-0.5 font-semibold">2</span>
+              </div>
+              <div class="kanban-card border-l-2 border-l-green-500">
+                <p class="font-medium text-vb-navy">Transportes García</p>
+                <p class="text-vb-muted text-[11px] mt-1">32 llantas renovadas Bandag</p>
+                <p class="text-xs font-semibold text-green-700 mt-2">$179,200 ✓</p>
+                <p class="text-[10px] text-vb-muted mt-1">Cerrado hace 1 día</p>
+              </div>
+              <div class="kanban-card border-l-2 border-l-green-500">
+                <p class="font-medium text-vb-navy">Carga Express Irapuato</p>
+                <p class="text-vb-muted text-[11px] mt-1">6 llantas nuevas línea</p>
+                <p class="text-xs font-semibold text-green-700 mt-2">$54,600 ✓</p>
+                <p class="text-[10px] text-vb-muted mt-1">Cerrado hace 3 días</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOCKUP 3: Cotización -->
+    <div class="mb-12">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 3 — Formato de cotización</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Cotización #0342</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-white/50">
+            <span>Descargar PDF</span>
+            <span>Enviar por correo</span>
+          </div>
+        </div>
+        <div class="p-6 md:p-10 bg-white">
+          <!-- Header cotización -->
+          <div class="flex items-start justify-between mb-8 pb-6 border-b border-vb-border">
+            <div class="flex items-center gap-4">
+              <img src="https://vitabajio.com/logoVB512.png" alt="Vita Bajío" class="h-14 w-14 object-contain" />
+              <div>
+                <p class="font-bold text-vb-navy text-lg">VITA BAJÍO</p>
+                <p class="text-xs text-vb-muted">Prol. Hidalgo 1500, Col. San Juan de la Presa</p>
+                <p class="text-xs text-vb-muted">Salamanca, Gto. C.P. 36770</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-vb-muted uppercase tracking-wider">Cotización</p>
+              <p class="text-2xl font-bold text-vb-navy">#0342</p>
+              <p class="text-xs text-vb-muted mt-1">25 de marzo de 2026</p>
+              <p class="text-xs text-amber-600 font-medium mt-0.5">Vigencia: 15 días</p>
+            </div>
+          </div>
+
+          <!-- Cliente -->
+          <div class="mb-6">
+            <p class="text-xs text-vb-muted uppercase tracking-wider mb-1">Cliente</p>
+            <p class="text-sm font-semibold text-vb-navy">Transportes García S.A. de C.V.</p>
+            <p class="text-xs text-vb-muted">RFC: TGA980515XX3 · Salamanca, Gto.</p>
+            <p class="text-xs text-vb-muted">Contacto: Ing. Roberto García · Tel. 464 123 4567</p>
+          </div>
+
+          <!-- Tabla productos -->
+          <div class="table-scroll">
+          <table class="w-full text-xs mb-6">
+            <thead>
+              <tr class="bg-vb-navy text-white text-left">
+                <th class="py-2.5 px-3 font-semibold">Producto</th>
+                <th class="py-2.5 px-3 font-semibold">Marca</th>
+                <th class="py-2.5 px-3 font-semibold">Medida</th>
+                <th class="py-2.5 px-3 font-semibold">Tipo</th>
+                <th class="py-2.5 px-3 font-semibold text-center">Cant.</th>
+                <th class="py-2.5 px-3 font-semibold text-right">P. Unit.</th>
+                <th class="py-2.5 px-3 font-semibold text-right">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row border-b border-vb-border/50">
+                <td class="py-2.5 px-3 text-vb-text font-medium">Llanta renovada Bandag</td>
+                <td class="py-2.5 px-3 text-vb-muted">Bandag</td>
+                <td class="py-2.5 px-3 text-vb-muted">11R22.5</td>
+                <td class="py-2.5 px-3"><span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-medium">Renovada</span></td>
+                <td class="py-2.5 px-3 text-center text-vb-text">24</td>
+                <td class="py-2.5 px-3 text-right text-vb-text">$2,800</td>
+                <td class="py-2.5 px-3 text-right text-vb-text font-medium">$67,200</td>
+              </tr>
+              <tr class="table-row border-b border-vb-border/50">
+                <td class="py-2.5 px-3 text-vb-text font-medium">Llanta nueva línea</td>
+                <td class="py-2.5 px-3 text-vb-muted">Bridgestone</td>
+                <td class="py-2.5 px-3 text-vb-muted">11R24.5</td>
+                <td class="py-2.5 px-3"><span class="bg-green-50 text-green-700 px-2 py-0.5 rounded text-[10px] font-medium">Nueva línea</span></td>
+                <td class="py-2.5 px-3 text-center text-vb-text">8</td>
+                <td class="py-2.5 px-3 text-right text-vb-text">$8,900</td>
+                <td class="py-2.5 px-3 text-right text-vb-text font-medium">$71,200</td>
+              </tr>
+              <tr class="table-row border-b border-vb-border/50">
+                <td class="py-2.5 px-3 text-vb-text font-medium">Servicio de diagnóstico</td>
+                <td class="py-2.5 px-3 text-vb-muted">—</td>
+                <td class="py-2.5 px-3 text-vb-muted">—</td>
+                <td class="py-2.5 px-3"><span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-[10px] font-medium">Servicio</span></td>
+                <td class="py-2.5 px-3 text-center text-vb-text">1</td>
+                <td class="py-2.5 px-3 text-right text-vb-text">$3,500</td>
+                <td class="py-2.5 px-3 text-right text-vb-text font-medium">$3,500</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+
+          <!-- Totales -->
+          <div class="flex justify-end">
+            <div class="w-64">
+              <div class="flex justify-between text-xs text-vb-muted py-1.5">
+                <span>Subtotal</span><span>$141,900</span>
+              </div>
+              <div class="flex justify-between text-xs text-vb-muted py-1.5">
+                <span>IVA (16%)</span><span>$22,704</span>
+              </div>
+              <div class="flex justify-between text-sm font-bold text-vb-navy py-2.5 border-t-2 border-vb-navy mt-1">
+                <span>Total</span><span>$164,604 MXN</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notas -->
+          <div class="mt-8 pt-4 border-t border-vb-border">
+            <p class="text-[10px] text-vb-muted uppercase tracking-wider mb-2">Condiciones</p>
+            <p class="text-xs text-vb-muted leading-relaxed">
+              Precios en MXN antes de IVA. Vigencia 15 días naturales. Entrega en almacén Vita Bajío.
+              Tiempo de entrega: 3-5 días hábiles para llantas nuevas, 72 hrs para renovado Bandag.
+              Forma de pago: 50% anticipo, 50% contra entrega.
+            </p>
+          </div>
+
+          <!-- Marcas -->
+          <div class="flex items-center gap-4 mt-6 pt-4 border-t border-vb-border">
+            <p class="text-[10px] text-vb-muted uppercase tracking-wider mr-2">Marcas:</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Bridgestone_201x_logo.svg" alt="Bridgestone" class="h-4 object-contain opacity-50" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Firestone.svg" alt="Firestone" class="h-3.5 object-contain opacity-50" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Michelin_Wordmark.svg" alt="Michelin" class="h-3 object-contain opacity-50" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Continental_logo.svg" alt="Continental" class="h-3.5 object-contain opacity-50" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOCKUP 4: Reporte de ventas -->
+    <div class="mb-6">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 4 — Reporte de ventas</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Reporte de Ventas</span>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-white/50">
+            <span>Marzo 2026</span>
+            <span>Exportar</span>
+          </div>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <!-- Summary cards -->
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Renovada</p>
+              <p class="text-xl font-bold text-vb-navy">$892,400</p>
+              <div class="w-full h-1.5 bg-vb-surface rounded-full mt-2"><div class="h-full bg-blue-500 rounded-full" style="width:55%"></div></div>
+              <p class="text-[10px] text-vb-muted mt-1">55% del total</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Nueva línea</p>
+              <p class="text-xl font-bold text-vb-navy">$512,300</p>
+              <div class="w-full h-1.5 bg-vb-surface rounded-full mt-2"><div class="h-full bg-green-500 rounded-full" style="width:32%"></div></div>
+              <p class="text-[10px] text-vb-muted mt-1">32% del total</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Nueva china</p>
+              <p class="text-xl font-bold text-vb-navy">$218,700</p>
+              <div class="w-full h-1.5 bg-vb-surface rounded-full mt-2"><div class="h-full bg-amber-500 rounded-full" style="width:13%"></div></div>
+              <p class="text-[10px] text-vb-muted mt-1">13% del total</p>
+            </div>
+          </div>
+
+          <!-- Sales table -->
+          <div class="bg-white border border-vb-border rounded-md overflow-hidden table-scroll">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="bg-vb-surface border-b border-vb-border text-left">
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Fecha</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Cliente</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Tipo</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Productos</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-right">Monto</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Vendedor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">25/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Transportes García</td>
+                  <td class="py-2 px-3"><span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-medium">Renovada</span></td>
+                  <td class="py-2 px-3 text-vb-muted">24× Bandag 11R22.5</td>
+                  <td class="py-2 px-3 text-right text-vb-text font-medium">$67,200</td>
+                  <td class="py-2 px-3 text-vb-muted">J. Méndez</td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">24/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Fletes del Bajío</td>
+                  <td class="py-2 px-3"><span class="bg-green-50 text-green-700 px-2 py-0.5 rounded text-[10px] font-medium">Nueva línea</span></td>
+                  <td class="py-2 px-3 text-vb-muted">8× Bridgestone 11R24.5</td>
+                  <td class="py-2 px-3 text-right text-vb-text font-medium">$71,200</td>
+                  <td class="py-2 px-3 text-vb-muted">R. Salazar</td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">24/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Carga Express Irapuato</td>
+                  <td class="py-2 px-3"><span class="bg-amber-50 text-amber-700 px-2 py-0.5 rounded text-[10px] font-medium">Nueva china</span></td>
+                  <td class="py-2 px-3 text-vb-muted">12× DoubleStar 11R22.5</td>
+                  <td class="py-2 px-3 text-right text-vb-text font-medium">$26,400</td>
+                  <td class="py-2 px-3 text-vb-muted">J. Méndez</td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">23/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Autotrans SAL</td>
+                  <td class="py-2 px-3"><span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-medium">Renovada</span></td>
+                  <td class="py-2 px-3 text-vb-muted">16× Bandag 295/75R22.5</td>
+                  <td class="py-2 px-3 text-right text-vb-text font-medium">$44,800</td>
+                  <td class="py-2 px-3 text-vb-muted">R. Salazar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-6"><hr class="border-vb-border" /></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- FASE 2                                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="phase-badge bg-vb-navy-light text-white">Fase 2</span>
+      <span class="text-xs text-vb-muted">Semanas 4–5</span>
+      <span class="text-[10px] text-vb-muted border border-vb-border rounded-full px-2.5 py-0.5 ml-auto">Incluido en ambos paquetes</span>
+    </div>
+    <h2 class="text-2xl font-bold text-vb-navy mb-1">Inventario y Cascos</h2>
+    <p class="text-sm text-vb-muted mb-10">Control de existencias · Catálogo de marcas y medidas · Recolección de cascos</p>
+
+    <!-- MOCKUP 5: Inventario -->
+    <div class="mb-12">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 5 — Inventario</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Inventario</span>
+          </div>
+          <span class="text-white/40 text-xs">Actualizado: 25/03/2026 08:30</span>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <div class="bg-white border border-vb-border rounded-md overflow-hidden table-scroll">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="bg-vb-surface border-b border-vb-border text-left">
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Producto</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Marca</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Medida</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Tipo</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-center">Stock</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-center">Mín.</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2.5 px-3 text-vb-text font-medium">Llanta renovada Bandag</td>
+                  <td class="py-2.5 px-3 text-vb-muted">Bandag</td>
+                  <td class="py-2.5 px-3 text-vb-muted">11R22.5</td>
+                  <td class="py-2.5 px-3"><span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-medium">Renovada</span></td>
+                  <td class="py-2.5 px-3 text-center font-semibold text-vb-navy">48</td>
+                  <td class="py-2.5 px-3 text-center text-vb-muted">10</td>
+                  <td class="py-2.5 px-3"><span class="w-2 h-2 rounded-full bg-green-500 inline-block mr-1"></span><span class="text-green-700">OK</span></td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2.5 px-3 text-vb-text font-medium">Llanta nueva Bridgestone</td>
+                  <td class="py-2.5 px-3 text-vb-muted">Bridgestone</td>
+                  <td class="py-2.5 px-3 text-vb-muted">11R24.5</td>
+                  <td class="py-2.5 px-3"><span class="bg-green-50 text-green-700 px-2 py-0.5 rounded text-[10px] font-medium">Nueva línea</span></td>
+                  <td class="py-2.5 px-3 text-center font-semibold text-vb-navy">12</td>
+                  <td class="py-2.5 px-3 text-center text-vb-muted">8</td>
+                  <td class="py-2.5 px-3"><span class="w-2 h-2 rounded-full bg-green-500 inline-block mr-1"></span><span class="text-green-700">OK</span></td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50 bg-amber-50/50">
+                  <td class="py-2.5 px-3 text-vb-text font-medium">DoubleStar TBR</td>
+                  <td class="py-2.5 px-3 text-vb-muted">DoubleStar</td>
+                  <td class="py-2.5 px-3 text-vb-muted">11R22.5</td>
+                  <td class="py-2.5 px-3"><span class="bg-amber-50 text-amber-700 px-2 py-0.5 rounded text-[10px] font-medium">Nueva china</span></td>
+                  <td class="py-2.5 px-3 text-center font-semibold text-amber-600">3</td>
+                  <td class="py-2.5 px-3 text-center text-vb-muted">6</td>
+                  <td class="py-2.5 px-3"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block mr-1"></span><span class="text-amber-600 font-medium">Bajo</span></td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50 bg-red-50/30">
+                  <td class="py-2.5 px-3 text-vb-text font-medium">Llanta renovada Bandag</td>
+                  <td class="py-2.5 px-3 text-vb-muted">Bandag</td>
+                  <td class="py-2.5 px-3 text-vb-muted">295/75R22.5</td>
+                  <td class="py-2.5 px-3"><span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-medium">Renovada</span></td>
+                  <td class="py-2.5 px-3 text-center font-semibold text-red-600">0</td>
+                  <td class="py-2.5 px-3 text-center text-vb-muted">5</td>
+                  <td class="py-2.5 px-3"><span class="w-2 h-2 rounded-full bg-red-500 inline-block mr-1"></span><span class="text-red-600 font-medium">Agotado</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOCKUP 6: Cascos -->
+    <div class="mb-6">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 6 — Cascos recolectados</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Cascos Recolectados</span>
+          </div>
+          <span class="text-white/40 text-xs">Marzo 2026</span>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Hoy</p>
+              <p class="text-2xl font-bold text-vb-navy">23</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Esta semana</p>
+              <p class="text-2xl font-bold text-vb-navy">87</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Mes</p>
+              <p class="text-2xl font-bold text-vb-navy">312</p>
+            </div>
+          </div>
+          <div class="bg-white border border-vb-border rounded-md overflow-hidden table-scroll">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="bg-vb-surface border-b border-vb-border text-left">
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Fecha</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Cliente</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-center">Cascos</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Medida</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Recibió</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">25/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Autotrans SAL</td>
+                  <td class="py-2 px-3 text-center font-semibold text-vb-navy">12</td>
+                  <td class="py-2 px-3 text-vb-muted">11R22.5</td>
+                  <td class="py-2 px-3 text-vb-muted">J. Méndez</td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">25/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Transportes García</td>
+                  <td class="py-2 px-3 text-center font-semibold text-vb-navy">8</td>
+                  <td class="py-2 px-3 text-vb-muted">295/75R22.5</td>
+                  <td class="py-2 px-3 text-vb-muted">R. Salazar</td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">25/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Fletes del Bajío</td>
+                  <td class="py-2 px-3 text-center font-semibold text-vb-navy">3</td>
+                  <td class="py-2 px-3 text-vb-muted">11R24.5</td>
+                  <td class="py-2 px-3 text-vb-muted">J. Méndez</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-6"><hr class="border-vb-border" /></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- FASE 3                                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="phase-badge bg-vb-muted text-white">Fase 3</span>
+      <span class="text-xs text-vb-muted">Semanas 6–7</span>
+      <span class="text-[10px] text-vb-muted border border-vb-border rounded-full px-2.5 py-0.5 ml-auto">Incluido en ambos paquetes</span>
+    </div>
+    <h2 class="text-2xl font-bold text-vb-navy mb-1">Gestión Interna</h2>
+    <p class="text-sm text-vb-muted mb-10">Control de combustible · Evaluaciones de desempeño</p>
+
+    <!-- MOCKUP 7: Combustible -->
+    <div class="mb-12">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 7 — Control de combustible</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Control de Combustible</span>
+          </div>
+          <span class="text-white/40 text-xs">Marzo 2026</span>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Gasto del mes</p>
+              <p class="text-xl font-bold text-vb-navy">$38,420</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Litros cargados</p>
+              <p class="text-xl font-bold text-vb-navy">1,634 L</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Promedio $/L</p>
+              <p class="text-xl font-bold text-vb-navy">$23.51</p>
+            </div>
+          </div>
+          <div class="bg-white border border-vb-border rounded-md overflow-hidden table-scroll">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="bg-vb-surface border-b border-vb-border text-left">
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Fecha</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Unidad</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-right">Km</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-right">Litros</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-right">$/L</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold text-right">Total</th>
+                  <th class="py-2.5 px-3 text-vb-muted font-semibold">Chofer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">25/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Unidad 07</td>
+                  <td class="py-2 px-3 text-right text-vb-text">142,380</td>
+                  <td class="py-2 px-3 text-right text-vb-text">45.0</td>
+                  <td class="py-2 px-3 text-right text-vb-muted">$23.50</td>
+                  <td class="py-2 px-3 text-right text-vb-text font-medium">$1,057.50</td>
+                  <td class="py-2 px-3 text-vb-muted">P. Vázquez</td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">24/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Unidad 03</td>
+                  <td class="py-2 px-3 text-right text-vb-text">98,210</td>
+                  <td class="py-2 px-3 text-right text-vb-text">52.3</td>
+                  <td class="py-2 px-3 text-right text-vb-muted">$23.65</td>
+                  <td class="py-2 px-3 text-right text-vb-text font-medium">$1,236.90</td>
+                  <td class="py-2 px-3 text-vb-muted">M. López</td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2 px-3 text-vb-muted">24/03</td>
+                  <td class="py-2 px-3 text-vb-text font-medium">Unidad 11</td>
+                  <td class="py-2 px-3 text-right text-vb-text">67,540</td>
+                  <td class="py-2 px-3 text-right text-vb-text">38.7</td>
+                  <td class="py-2 px-3 text-right text-vb-muted">$23.40</td>
+                  <td class="py-2 px-3 text-right text-vb-text font-medium">$905.58</td>
+                  <td class="py-2 px-3 text-vb-muted">A. Ramírez</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOCKUP 8: Evaluaciones -->
+    <div class="mb-6">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 8 — Evaluaciones de desempeño</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Evaluaciones de Desempeño</span>
+          </div>
+          <span class="text-white/40 text-xs">Q1 2026</span>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <div class="space-y-3">
+            <!-- Employee card -->
+            <div class="bg-white border border-vb-border rounded-md p-4 flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-vb-navy flex items-center justify-center text-white text-xs font-bold">JM</div>
+                <div>
+                  <p class="text-sm font-semibold text-vb-navy">Juan Méndez</p>
+                  <p class="text-xs text-vb-muted">Vendedor · 3 años en Vita Bajío</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-6 text-xs">
+                <div class="text-center"><p class="text-vb-muted">Ventas</p><p class="font-bold text-vb-navy">$412,300</p></div>
+                <div class="text-center"><p class="text-vb-muted">Cotizaciones</p><p class="font-bold text-vb-navy">24</p></div>
+                <div class="text-center"><p class="text-vb-muted">Cierre</p><p class="font-bold text-green-700">68%</p></div>
+                <div class="text-center"><p class="text-vb-muted">Meta</p><p class="font-bold text-green-700">112%</p></div>
+              </div>
+            </div>
+            <div class="bg-white border border-vb-border rounded-md p-4 flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-vb-navy-light flex items-center justify-center text-white text-xs font-bold">RS</div>
+                <div>
+                  <p class="text-sm font-semibold text-vb-navy">Roberto Salazar</p>
+                  <p class="text-xs text-vb-muted">Vendedor · 1 año en Vita Bajío</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-6 text-xs">
+                <div class="text-center"><p class="text-vb-muted">Ventas</p><p class="font-bold text-vb-navy">$287,600</p></div>
+                <div class="text-center"><p class="text-vb-muted">Cotizaciones</p><p class="font-bold text-vb-navy">18</p></div>
+                <div class="text-center"><p class="text-vb-muted">Cierre</p><p class="font-bold text-vb-navy">52%</p></div>
+                <div class="text-center"><p class="text-vb-muted">Meta</p><p class="font-bold text-amber-600">87%</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-6"><hr class="border-vb-border" /></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- FASE 4 — Incluido en Sistema +          -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="phase-badge bg-vb-gold text-vb-navy-dark">Fase 4</span>
+      <span class="text-xs text-vb-muted">Semanas 8–11</span>
+      <span class="text-[10px] font-semibold text-vb-gold border border-vb-gold/30 rounded-full px-2.5 py-0.5 ml-auto">Exclusivo Sistema +</span>
+    </div>
+    <h2 class="text-2xl font-bold text-vb-navy mb-1">Funcionalidades avanzadas</h2>
+    <p class="text-sm text-vb-muted mb-10">Incluidas en el paquete Sistema + para llevar la operación al siguiente nivel</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div class="border border-vb-gold/20 rounded-md p-6 bg-vb-gold/5">
+        <p class="text-xs text-vb-gold font-semibold uppercase tracking-wider mb-2">WhatsApp</p>
+        <h3 class="text-base font-bold text-vb-navy mb-2">Notificaciones automáticas</h3>
+        <p class="text-sm text-vb-muted leading-relaxed">
+          Alertas a clientes cuando su cotización está por vencer, cuando su llanta renovada está lista, o recordatorios de servicio programado. Todo automático desde el sistema.
+        </p>
+      </div>
+      <div class="border border-vb-gold/20 rounded-md p-6 bg-vb-gold/5">
+        <p class="text-xs text-vb-gold font-semibold uppercase tracking-wider mb-2">Inteligencia</p>
+        <h3 class="text-base font-bold text-vb-navy mb-2">Alertas de re-contacto</h3>
+        <p class="text-sm text-vb-muted leading-relaxed">
+          El sistema detecta patrones de compra y te avisa cuando un cliente lleva más tiempo del habitual sin comprar. "Transportes García no ha comprado en 45 días — normalmente compra cada 30."
+        </p>
+      </div>
+      <div class="border border-vb-gold/20 rounded-md p-6 bg-vb-gold/5">
+        <p class="text-xs text-vb-gold font-semibold uppercase tracking-wider mb-2">Portal</p>
+        <h3 class="text-base font-bold text-vb-navy mb-2">Acceso para clientes</h3>
+        <p class="text-sm text-vb-muted leading-relaxed">
+          Un enlace donde tus clientes de flotilla pueden consultar sus cotizaciones, historial de compras y cascos pendientes — sin llamar a la oficina.
+        </p>
+      </div>
+      <div class="border border-vb-gold/20 rounded-md p-6 bg-vb-gold/5">
+        <p class="text-xs text-vb-gold font-semibold uppercase tracking-wider mb-2">Móvil</p>
+        <h3 class="text-base font-bold text-vb-navy mb-2">App para campo</h3>
+        <p class="text-sm text-vb-muted leading-relaxed">
+          Los equipos de servicio móvil y choferes registran cargas de combustible, recolección de cascos y visitas a clientes directamente desde su teléfono.
+        </p>
+      </div>
+    </div>
+
+    <!-- MOCKUP 9: Alertas WhatsApp -->
+    <div class="mb-12">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 9 — Notificaciones y alertas</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Centro de Alertas</span>
+          </div>
+          <span class="text-white/40 text-xs">3 alertas activas</span>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <div class="space-y-3 max-w-2xl">
+            <!-- WhatsApp notification -->
+            <div class="bg-white border border-vb-border rounded-md p-4">
+              <div class="flex items-start justify-between">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#25D366;">W</div>
+                  <div>
+                    <p class="text-xs font-semibold text-vb-navy">WhatsApp enviado — Cotización #0342</p>
+                    <p class="text-xs text-vb-muted mt-1">Se notificó a <span class="font-medium text-vb-text">Transportes García</span> que su cotización vence en 3 días. Mensaje entregado y leído.</p>
+                  </div>
+                </div>
+                <span class="text-[10px] text-vb-muted whitespace-nowrap ml-3">Hace 2 hrs</span>
+              </div>
+            </div>
+            <!-- Re-contact alert -->
+            <div class="bg-white border-l-2 border-l-amber-400 border border-vb-border rounded-md p-4">
+              <div class="flex items-start justify-between">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 text-xs font-bold flex-shrink-0">!</div>
+                  <div>
+                    <p class="text-xs font-semibold text-vb-navy">Alerta de re-contacto — Autotrans SAL</p>
+                    <p class="text-xs text-vb-muted mt-1">Lleva <span class="font-medium text-amber-600">47 días sin comprar</span>. Su frecuencia promedio es cada 28 días. Última compra: 16 llantas renovadas Bandag 295/75R22.5.</p>
+                  </div>
+                </div>
+                <span class="text-[10px] text-vb-muted whitespace-nowrap ml-3">Hoy</span>
+              </div>
+            </div>
+            <!-- Another re-contact -->
+            <div class="bg-white border-l-2 border-l-amber-400 border border-vb-border rounded-md p-4">
+              <div class="flex items-start justify-between">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 text-xs font-bold flex-shrink-0">!</div>
+                  <div>
+                    <p class="text-xs font-semibold text-vb-navy">Alerta de re-contacto — Carga Express Irapuato</p>
+                    <p class="text-xs text-vb-muted mt-1">Lleva <span class="font-medium text-amber-600">35 días sin comprar</span>. Su frecuencia promedio es cada 21 días. Última compra: 12 llantas nuevas china DoubleStar.</p>
+                  </div>
+                </div>
+                <span class="text-[10px] text-vb-muted whitespace-nowrap ml-3">Ayer</span>
+              </div>
+            </div>
+            <!-- WhatsApp scheduled -->
+            <div class="bg-white border border-vb-border rounded-md p-4">
+              <div class="flex items-start justify-between">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#25D366;">W</div>
+                  <div>
+                    <p class="text-xs font-semibold text-vb-navy">WhatsApp programado — Fletes del Bajío</p>
+                    <p class="text-xs text-vb-muted mt-1">Recordatorio de servicio de renovado programado para el 28/03. Se enviará automáticamente mañana a las 9:00 AM.</p>
+                  </div>
+                </div>
+                <span class="text-[10px] text-blue-600 whitespace-nowrap ml-3">Programado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOCKUP 10: Portal del cliente -->
+    <div class="mb-6">
+      <p class="text-xs font-semibold text-vb-muted uppercase tracking-wider mb-3">Vista 10 — Portal del cliente</p>
+      <div class="mockup-screen">
+        <div class="mockup-titlebar">
+          <div class="flex items-center gap-3">
+            <img src="https://vitabajio.com/logoVB512.png" alt="VB" class="h-7 w-7 object-contain" />
+            <span class="text-white text-sm font-semibold">Portal — Transportes García</span>
+          </div>
+          <span class="text-white/40 text-xs">Cliente desde 2019</span>
+        </div>
+        <div class="p-6 bg-vb-surface">
+          <!-- Client summary -->
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Compras este año</p>
+              <p class="text-xl font-bold text-vb-navy">$1,240,800</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Cotizaciones abiertas</p>
+              <p class="text-xl font-bold text-vb-navy">2</p>
+            </div>
+            <div class="stat-card text-center">
+              <p class="text-xs text-vb-muted mb-1">Cascos pendientes</p>
+              <p class="text-xl font-bold text-vb-navy">8</p>
+            </div>
+          </div>
+
+          <!-- Recent orders -->
+          <div class="bg-white border border-vb-border rounded-md overflow-hidden mb-4">
+            <div class="px-4 py-3 border-b border-vb-border">
+              <p class="text-xs font-semibold text-vb-navy uppercase tracking-wider">Últimas compras</p>
+            </div>
+            <table class="w-full text-xs">
+              <tbody>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2.5 px-4 text-vb-muted">25/03/2026</td>
+                  <td class="py-2.5 px-4 text-vb-text font-medium">24× Bandag 11R22.5 Renovada</td>
+                  <td class="py-2.5 px-4 text-right font-semibold text-vb-navy">$67,200</td>
+                  <td class="py-2.5 px-4 text-right"><span class="text-green-700 text-[10px] font-medium">Entregado</span></td>
+                </tr>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2.5 px-4 text-vb-muted">18/03/2026</td>
+                  <td class="py-2.5 px-4 text-vb-text font-medium">32× Bandag 11R22.5 Renovada</td>
+                  <td class="py-2.5 px-4 text-right font-semibold text-vb-navy">$89,600</td>
+                  <td class="py-2.5 px-4 text-right"><span class="text-green-700 text-[10px] font-medium">Entregado</span></td>
+                </tr>
+                <tr class="table-row">
+                  <td class="py-2.5 px-4 text-vb-muted">05/03/2026</td>
+                  <td class="py-2.5 px-4 text-vb-text font-medium">8× Bridgestone 11R24.5 Nueva línea</td>
+                  <td class="py-2.5 px-4 text-right font-semibold text-vb-navy">$71,200</td>
+                  <td class="py-2.5 px-4 text-right"><span class="text-green-700 text-[10px] font-medium">Entregado</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Open quotes -->
+          <div class="bg-white border border-vb-border rounded-md overflow-hidden">
+            <div class="px-4 py-3 border-b border-vb-border">
+              <p class="text-xs font-semibold text-vb-navy uppercase tracking-wider">Cotizaciones abiertas</p>
+            </div>
+            <table class="w-full text-xs">
+              <tbody>
+                <tr class="table-row border-b border-vb-border/50">
+                  <td class="py-2.5 px-4 text-vb-text font-medium">Cotización #0342</td>
+                  <td class="py-2.5 px-4 text-vb-muted">24× Bandag + 8× Bridgestone + Diagnóstico</td>
+                  <td class="py-2.5 px-4 text-right font-semibold text-vb-navy">$164,604</td>
+                  <td class="py-2.5 px-4 text-right"><span class="text-amber-600 text-[10px] font-medium">Vence en 3 días</span></td>
+                </tr>
+                <tr class="table-row">
+                  <td class="py-2.5 px-4 text-vb-text font-medium">Cotización #0358</td>
+                  <td class="py-2.5 px-4 text-vb-muted">16× Bandag 295/75R22.5 Renovada</td>
+                  <td class="py-2.5 px-4 text-right font-semibold text-vb-navy">$44,800</td>
+                  <td class="py-2.5 px-4 text-right"><span class="text-vb-muted text-[10px] font-medium">Vence en 12 días</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-6"><hr class="border-vb-border" /></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- PROPUESTA COMERCIAL                     -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <h2 class="text-2xl font-bold text-vb-navy mb-2">Inversión</h2>
+    <p class="text-sm text-vb-muted mb-10">Dos modalidades. El mismo sistema. La diferencia está en el acompañamiento.</p>
+
+    <!-- Fases table (shared) -->
+    <div class="overflow-hidden border border-vb-border rounded-md mb-10 table-scroll">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-vb-navy text-white text-left">
+            <th class="py-3 px-4 font-semibold">Fase</th>
+            <th class="py-3 px-4 font-semibold">Incluye</th>
+            <th class="py-3 px-4 font-semibold">Tiempo</th>
+            <th class="py-3 px-4 font-semibold text-right">Inversión</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-vb-border">
+            <td class="py-3 px-4 font-semibold text-vb-navy">Fase 1</td>
+            <td class="py-3 px-4 text-vb-muted text-xs leading-relaxed">Dashboard · Proceso de ventas · Cotizaciones · Reportes de venta · 2 admins + 9 usuarios</td>
+            <td class="py-3 px-4 text-vb-muted">3 semanas</td>
+            <td class="py-3 px-4 text-right font-bold text-vb-navy">$50,000</td>
+          </tr>
+          <tr class="border-b border-vb-border bg-vb-surface/50">
+            <td class="py-3 px-4 font-semibold text-vb-navy">Fase 2</td>
+            <td class="py-3 px-4 text-vb-muted text-xs leading-relaxed">Inventario en tiempo real · Catálogo marcas/medidas · Cascos recolectados</td>
+            <td class="py-3 px-4 text-vb-muted">2 semanas</td>
+            <td class="py-3 px-4 text-right font-bold text-vb-navy">$30,000</td>
+          </tr>
+          <tr class="border-b border-vb-border">
+            <td class="py-3 px-4 font-semibold text-vb-navy">Fase 3</td>
+            <td class="py-3 px-4 text-vb-muted text-xs leading-relaxed">Control de combustible · Evaluaciones de desempeño · Reporte diario automático por correo</td>
+            <td class="py-3 px-4 text-vb-muted">2 semanas</td>
+            <td class="py-3 px-4 text-right font-bold text-vb-navy">$25,000</td>
+          </tr>
+          <tr class="bg-vb-gold/5">
+            <td class="py-3 px-4 font-semibold text-vb-navy">Fase 4</td>
+            <td class="py-3 px-4 text-vb-muted text-xs leading-relaxed">WhatsApp · Alertas inteligentes · Portal del cliente · App móvil</td>
+            <td class="py-3 px-4 text-vb-muted">4 semanas</td>
+            <td class="py-3 px-4 text-right"><span class="text-[10px] font-semibold text-vb-gold border border-vb-gold/30 rounded-full px-2.5 py-0.5">Sistema +</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Two packages side by side -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+
+      <!-- Package 1: Sistema -->
+      <div class="border border-vb-border rounded-md overflow-hidden">
+        <div style="background:#003c6e;padding:16px 24px;">
+          <h3 class="text-lg font-bold" style="color:#ffffff;">Sistema</h3>
+          <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.6);">El sistema completo, listo para operar</p>
+        </div>
+        <div class="px-6 py-6">
+          <div class="mb-6">
+            <p class="text-xs text-vb-muted uppercase tracking-wider mb-1">Desarrollo (fases 1–3)</p>
+            <p class="text-3xl font-bold text-vb-navy">$105,000 <span class="text-sm font-normal text-vb-muted">MXN</span></p>
+          </div>
+          <div class="mb-6">
+            <p class="text-xs text-vb-muted uppercase tracking-wider mb-1">Mensualidad</p>
+            <p class="text-xl font-bold text-vb-navy">$10,000 <span class="text-sm font-normal text-vb-muted">MXN/mes</span></p>
+          </div>
+
+          <div class="space-y-3 text-sm text-vb-muted">
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Dashboard, Proceso de ventas, Cotizaciones, Reportes, Inventario, Cascos, Combustible, Evaluaciones</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>2 admins + 9 usuarios</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Carga inicial del catálogo de productos, marcas y medidas</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>2 sesiones de capacitación presencial en sus instalaciones</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Reportes personalizados (ustedes definen qué quieren ver)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Hosting y mantenimiento incluido</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Soporte por correo en horario laboral (respuesta en máximo 4 hrs)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Reporte diario automático a 1 correo</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Correcciones y actualizaciones menores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 2: Sistema + -->
+      <div class="border-2 border-vb-navy rounded-md overflow-hidden relative">
+        <div class="absolute top-0 right-0 bg-vb-gold text-vb-navy-dark text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl" style="z-index:10">
+          Recomendado
+        </div>
+        <div style="background:#003c6e;padding:16px 24px;">
+          <h3 class="text-lg font-bold" style="color:#ffffff;">Sistema +</h3>
+          <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.6);">Todo lo anterior + funcionalidades avanzadas y soporte cercano</p>
+        </div>
+        <div class="px-6 py-6">
+          <div class="mb-6">
+            <p class="text-xs text-vb-muted uppercase tracking-wider mb-1">Desarrollo (fases 1–4)</p>
+            <p class="text-3xl font-bold text-vb-navy">$165,000 <span class="text-sm font-normal text-vb-muted">MXN</span></p>
+          </div>
+          <div class="mb-6">
+            <p class="text-xs text-vb-muted uppercase tracking-wider mb-1">Mensualidad</p>
+            <p class="text-xl font-bold text-vb-navy">$13,000 <span class="text-sm font-normal text-vb-muted">MXN/mes</span></p>
+          </div>
+
+          <div class="space-y-3 text-sm text-vb-text">
+            <div class="flex items-start gap-2">
+              <span class="text-vb-navy font-bold mt-0.5 text-xs">—</span>
+              <span>Todo lo del paquete Sistema</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">Notificaciones automáticas por WhatsApp a clientes</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">Alertas inteligentes de re-contacto</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">Portal de acceso para clientes de flotilla</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">App móvil para equipo de campo</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">Soporte por chat integrado en la aplicación</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">Revisión mensual presencial durante el primer trimestre</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">Actualizaciones y mejoras personalizadas trimestrales</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-vb-gold font-bold mt-0.5 text-xs">+</span>
+              <span class="font-medium">Respaldo y exportación de datos bajo demanda</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment terms -->
+    <div class="p-6 bg-vb-surface rounded-md border border-vb-border">
+      <p class="text-xs font-semibold text-vb-navy uppercase tracking-wider mb-3">Forma de pago por fase</p>
+      <div class="grid grid-cols-3 gap-6 text-sm text-vb-muted">
+        <div>
+          <p class="font-semibold text-vb-text mb-1">50% al iniciar</p>
+          <p class="text-xs">Se firma el acuerdo y se inicia el desarrollo de la fase correspondiente.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-vb-text mb-1">50% al entregar</p>
+          <p class="text-xs">Se presenta la fase funcional, se prueba en conjunto y se libera el pago restante.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-vb-text mb-1">Mensualidad</p>
+          <p class="text-xs">Comienza cuando Fase 1 entra en operación. Cubre hosting, soporte y mejoras. Contrato mínimo 12 meses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- FOOTER                                  -->
+  <!-- ════════════════════════════════════════ -->
+  <footer class="bg-vb-navy text-white/50 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between text-xs">
+      <div class="flex items-center gap-4">
+        <img src="https://vitabajio.com/logoVB512.png" alt="Vita Bajío" class="h-8 w-8 object-contain opacity-60" />
+        <span>Propuesta confidencial — Vita Bajío × Omar Rocha</span>
+      </div>
+      <span>Marzo 2026</span>
+    </div>
+  </footer>
+
+</body>
+</html>

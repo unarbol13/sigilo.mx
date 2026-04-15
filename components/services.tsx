@@ -2,6 +2,35 @@
 
 import { motion } from "framer-motion";
 import { SERVICES, CASE_STUDIES } from "@/lib/data";
+import { useTilt } from "@/lib/use-tilt";
+
+function CaseStudyCard({ cs }: { cs: typeof CASE_STUDIES[number] }) {
+  const tilt = useTilt(6);
+  return (
+    <div
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      className="bg-card border border-border rounded-2xl p-8 hover:border-accent/40 hover:shadow-[0_8px_30px_rgba(201,168,78,0.12)] transition-[border-color,box-shadow] duration-300 will-change-transform"
+      style={{ transition: "transform 0.15s ease-out, border-color 0.3s, box-shadow 0.3s" }}
+    >
+      <p className="font-mono text-xs text-accent-dark uppercase tracking-wider mb-3">
+        {cs.sector}
+      </p>
+      <h3 className="text-lg font-semibold text-foreground mb-1">
+        {cs.client}
+      </h3>
+      <p className="text-sm text-muted leading-relaxed mb-4">
+        {cs.description}
+      </p>
+      <div className="pt-4 border-t border-border">
+        <span className="text-xs font-mono text-muted">
+          {cs.modules}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export function Services() {
   return (
@@ -69,22 +98,8 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-card border border-border rounded-2xl p-8 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
             >
-              <p className="font-mono text-xs text-accent-dark uppercase tracking-wider mb-3">
-                {cs.sector}
-              </p>
-              <h3 className="text-lg font-semibold text-foreground mb-1">
-                {cs.client}
-              </h3>
-              <p className="text-sm text-muted leading-relaxed mb-4">
-                {cs.description}
-              </p>
-              <div className="pt-4 border-t border-border">
-                <span className="text-xs font-mono text-muted">
-                  {cs.modules}
-                </span>
-              </div>
+              <CaseStudyCard cs={cs} />
             </motion.div>
           ))}
         </div>

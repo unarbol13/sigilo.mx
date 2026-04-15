@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { PROJECTS, type Project, type ProjectStatus, type ProjectFocus } from "@/lib/data";
+import { useTilt } from "@/lib/use-tilt";
 
 const statusConfig: Record<
   ProjectStatus,
@@ -28,6 +29,11 @@ const statusConfig: Record<
     dot: "bg-status-concept",
     text: "text-status-concept-text",
   },
+  sold: {
+    label: "Vendido",
+    dot: "bg-accent",
+    text: "text-accent",
+  },
 };
 
 const FOCUS_CONFIG: Record<ProjectFocus, { label: string; description: string }> = {
@@ -44,12 +50,19 @@ const FOCUS_CONFIG: Record<ProjectFocus, { label: string; description: string }>
 function ProjectCard({ project }: { project: Project }) {
   const status = statusConfig[project.status];
   const href = project.mockupsUrl ?? project.url;
+  const tilt = useTilt(8);
 
   const inner = (
-    <div className="group bg-card border border-border rounded-2xl p-6 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 hover:-translate-y-1 flex flex-col h-full min-w-[320px] max-w-[380px] shrink-0 snap-start">
+    <div
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      className="group bg-card border border-border rounded-2xl p-6 hover:border-accent/40 hover:shadow-[0_8px_30px_rgba(201,168,78,0.12)] transition-[border-color,box-shadow] duration-300 flex flex-col h-full min-w-[320px] max-w-[380px] shrink-0 snap-start will-change-transform"
+      style={{ transition: "transform 0.15s ease-out, border-color 0.3s, box-shadow 0.3s" }}
+    >
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-lg font-semibold text-foreground group-hover:text-accent-dark transition-colors">
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-accent-hover transition-colors">
             {project.name}
           </h3>
           <p className="text-sm text-muted mt-0.5">

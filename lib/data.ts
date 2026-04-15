@@ -1,4 +1,4 @@
-export type ProjectStatus = "live" | "development" | "design" | "concept";
+export type ProjectStatus = "live" | "development" | "design" | "concept" | "sold";
 export type ProjectFocus = "civictech" | "business";
 
 export interface Project {
@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
     sector: "Gobierno",
     status: "concept",
     focus: "civictech",
-    url: null,
+    url: "https://municipios.prisma360solutions.com",
     mockupsUrl: null,
     stack: ["Next.js", "Supabase", "Mapbox"],
     highlights: ["Gamificación ciudadana", "Auditorías participativas", "Mapas interactivos"],
@@ -95,7 +95,7 @@ export const PROJECTS: Project[] = [
     sector: "Social",
     status: "development",
     focus: "civictech",
-    url: null,
+    url: "https://cauce-mx.vercel.app",
     mockupsUrl: null,
     stack: ["Next.js", "Supabase", "Stripe"],
     highlights: ["Pagos con Stripe", "Seguimiento de metas en tiempo real"],
@@ -121,7 +121,7 @@ export const PROJECTS: Project[] = [
       "App móvil POS para gestión integral de bares y cantinas. Comandas en tiempo real, inventario con recetas, control de personal.",
     type: "App Móvil",
     sector: "Hospitalidad",
-    status: "development",
+    status: "sold",
     focus: "business",
     url: null,
     mockupsUrl: "https://prisma360solutions.com/mockups/la-cuenta/",
@@ -138,21 +138,21 @@ export const PROJECTS: Project[] = [
     status: "design",
     focus: "business",
     url: null,
-    mockupsUrl: null,
+    mockupsUrl: "https://prisma360solutions.com/mockups/prisma-360/",
     stack: ["Figma", "Design System"],
     highlights: ["29 pantallas diseñadas", "3 módulos independientes", "Design system propio"],
   },
   {
-    id: "vita-bajio",
-    name: "Vita Bajío",
+    id: "flotapro",
+    name: "FlotaPro",
     tagline:
       "Sistema de gestión de llantas y flotillas. Ventas, cotizaciones, inventario y control operativo.",
     type: "Sistema de gestión",
     sector: "Automotriz",
     focus: "business",
-    status: "design",
+    status: "sold",
     url: null,
-    mockupsUrl: null,
+    mockupsUrl: "https://sigilo.mx/propuesta/publica",
     stack: ["Next.js", "Supabase", "React Native"],
     highlights: ["8 módulos de gestión", "Control de flotillas", "Cotizador integrado"],
   },
