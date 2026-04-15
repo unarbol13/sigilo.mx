@@ -1,43 +1,54 @@
 :root {
   --bg: #FAF7F2;
   --ink: #1F1B16;
-  --ink-muted: #6B6258;
-  --ink-soft: #9A9085;
-  --line: #E8E1D6;
-  --accent: #B8842C;
+  --ink-muted: #1F1B16;
+  --ink-soft: #1F1B16;
+  --line: #BFB5A4;
+  --accent: #8A5E14;
   --accent-soft: #F3E6C7;
-  --accent-ink: #6B4E17;
-  --danger: #A84C3B;
+  --accent-ink: #4A3508;
+  --danger: #8C2E1E;
   --danger-soft: #F5DFD8;
-  --calm: #567A4E;
+  --calm: #355A2C;
   --calm-soft: #E1EADD;
 }
 html, body { background: var(--bg); color: var(--ink); margin: 0; }
-body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-size: 18px; line-height: 1.55; }
+
+/* Accesibilidad: tipografía mayor para lectores adultos mayores */
+.text-xs { font-size: 15px !important; line-height: 1.45 !important; }
+.text-sm { font-size: 17px !important; line-height: 1.5 !important; }
+.text-base { font-size: 18px !important; }
+.text-lg { font-size: 20px !important; }
+.text-xl { font-size: 22px !important; }
+.text-2xl { font-size: 26px !important; }
+.text-3xl { font-size: 30px !important; }
+
+/* Sin opacidad ni difuminado en texto */
+p, span, label, button, a, h1, h2, h3, h4, h5, h6, div { opacity: 1 !important; }
 .display { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif; letter-spacing: -0.01em; }
 .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
 
 .dot {
   width: 64px; height: 64px; border-radius: 999px;
-  background: radial-gradient(circle at 50% 40%, #F6D487 0%, #B8842C 45%, rgba(184,132,44,0) 75%);
-  filter: drop-shadow(0 0 24px rgba(184,132,44,0.35));
+  background: #8A5E14;
 }
 
 .btn-primary {
   background: var(--ink); color: var(--bg);
-  border-radius: 14px; padding: 14px 20px; font-weight: 500;
-  width: 100%; border: 0; cursor: pointer; font-size: 15px;
+  border-radius: 14px; padding: 16px 20px; font-weight: 600;
+  width: 100%; border: 0; cursor: pointer; font-size: 18px;
 }
-.btn-primary:disabled { background: #C8C1B6; cursor: not-allowed; }
+.btn-primary:disabled { background: #5E574D; color: #fff; cursor: not-allowed; }
 .btn-secondary {
   background: #fff; color: var(--ink);
-  border-radius: 14px; padding: 14px 20px; font-weight: 500;
-  width: 100%; border: 1px solid var(--line); cursor: pointer; font-size: 15px;
+  border-radius: 14px; padding: 16px 20px; font-weight: 600;
+  width: 100%; border: 2px solid var(--ink); cursor: pointer; font-size: 18px;
 }
 .btn-danger {
   background: var(--danger); color: #fff;
-  border-radius: 14px; padding: 14px 20px; font-weight: 500;
-  width: 100%; border: 0; cursor: pointer; font-size: 15px;
+  border-radius: 14px; padding: 16px 20px; font-weight: 600;
+  width: 100%; border: 0; cursor: pointer; font-size: 18px;
 }
 
 .card {
@@ -49,8 +60,8 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
 
 .chip {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 10px; background: var(--accent-soft); color: var(--accent-ink);
-  border-radius: 999px; font-size: 12px; font-weight: 500;
+  padding: 8px 12px; background: var(--accent-soft); color: var(--accent-ink);
+  border-radius: 999px; font-size: 15px; font-weight: 600;
 }
 .chip-calm { background: var(--calm-soft); color: var(--calm); }
 .chip-danger { background: var(--danger-soft); color: var(--danger); }
@@ -64,35 +75,35 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
 .bottom-nav button {
   background: transparent; border: 0; cursor: pointer;
   display: flex; flex-direction: column; align-items: center; gap: 3px;
-  padding: 6px 4px; color: var(--ink-muted); font-size: 11px;
+  padding: 6px 4px; color: var(--ink); font-size: 14px; font-weight: 500;
 }
-.bottom-nav button.active { color: var(--ink); }
-.bottom-nav button svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.bottom-nav button.active { color: var(--ink); font-weight: 700; }
+.bottom-nav button svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
 .crisis-fab {
   position: absolute; top: 14px; right: 14px; z-index: 20;
   background: var(--danger); color: #fff;
-  border: 0; border-radius: 999px; padding: 8px 14px;
-  font-size: 12px; font-weight: 600; cursor: pointer;
-  box-shadow: 0 4px 12px rgba(168,76,59,0.25);
+  border: 0; border-radius: 999px; padding: 10px 16px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 12px rgba(140,46,30,0.35);
 }
 
 .topbar {
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 20px 6px;
 }
-.topbar .back { color: var(--ink-muted); font-size: 14px; background: none; border: 0; cursor: pointer; padding: 4px 0; }
-.topbar .pause { color: var(--ink-muted); font-size: 13px; background: none; border: 0; cursor: pointer; padding: 4px 0; }
+.topbar .back { color: var(--ink); font-size: 17px; font-weight: 600; background: none; border: 0; cursor: pointer; padding: 4px 0; }
+.topbar .pause { color: var(--ink); font-size: 16px; font-weight: 600; background: none; border: 0; cursor: pointer; padding: 4px 0; }
 
 .dev-bar {
   position: absolute; left: 0; right: 0; bottom: 0;
-  background: rgba(31,27,22,0.96); color: #fff;
+  background: #1F1B16; color: #fff;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 8px 12px; font-size: 12px; z-index: 50;
+  padding: 8px 12px; font-size: 14px; z-index: 50;
 }
-.dev-bar a { color: #fff; text-decoration: none; opacity: 0.85; }
-.dev-bar a:hover { opacity: 1; }
-.dev-bar .dev-label { opacity: 0.6; }
+.dev-bar a { color: #fff; text-decoration: none; }
+.dev-bar a:hover { text-decoration: underline; }
+.dev-bar .dev-label { color: #fff; }
 
 /* Phone frame on desktop */
 @media (min-width: 640px) {
@@ -132,4 +143,4 @@ body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
   --accent-ink: #7A3614;
 }
 .audience-child .display { font-family: "Iowan Old Style", Georgia, ui-serif, serif; }
-.audience-child body, .audience-child { font-size: 17px; }
+.audience-child body, .audience-child { font-size: 19px; }
