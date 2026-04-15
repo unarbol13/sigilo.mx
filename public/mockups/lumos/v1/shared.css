@@ -1,31 +1,35 @@
 :root {
-  --bg: #FAF7F2;
-  --ink: #1F1B16;
-  --ink-muted: #1F1B16;
-  --ink-soft: #1F1B16;
-  --line: #BFB5A4;
-  --accent: #8A5E14;
-  --accent-soft: #F3E6C7;
-  --accent-ink: #4A3508;
-  --danger: #8C2E1E;
-  --danger-soft: #F5DFD8;
-  --calm: #355A2C;
-  --calm-soft: #E1EADD;
+  --bg: #FFFFFF;
+  --ink: #000000;
+  --ink-muted: #000000;
+  --ink-soft: #000000;
+  --line: #000000;
+  --accent: #000000;
+  --accent-soft: #FFFFFF;
+  --accent-ink: #000000;
+  --danger: #B00000;
+  --danger-soft: #FFFFFF;
+  --calm: #006400;
+  --calm-soft: #FFFFFF;
 }
 html, body { background: var(--bg); color: var(--ink); margin: 0; }
-body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-size: 18px; line-height: 1.55; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-size: 19px; line-height: 1.6; color: #000000; }
 
-/* Accesibilidad: tipografía mayor para lectores adultos mayores */
-.text-xs { font-size: 15px !important; line-height: 1.45 !important; }
-.text-sm { font-size: 17px !important; line-height: 1.5 !important; }
-.text-base { font-size: 18px !important; }
-.text-lg { font-size: 20px !important; }
-.text-xl { font-size: 22px !important; }
-.text-2xl { font-size: 26px !important; }
-.text-3xl { font-size: 30px !important; }
+/* Accesibilidad MÁXIMA: todo el texto en negro puro, sin excepciones */
+*, *::before, *::after { color: #000000 !important; opacity: 1 !important; }
+.btn-primary, .btn-primary * { color: #FFFFFF !important; }
+.btn-danger, .btn-danger *, .crisis-fab, .crisis-fab * { color: #FFFFFF !important; }
+.dev-bar, .dev-bar * { color: #FFFFFF !important; }
 
-/* Sin opacidad ni difuminado en texto */
-p, span, label, button, a, h1, h2, h3, h4, h5, h6, div { opacity: 1 !important; }
+/* Tipografía aumentada — overrides de Tailwind */
+.text-xs { font-size: 16px !important; line-height: 1.5 !important; font-weight: 500 !important; }
+.text-sm { font-size: 18px !important; line-height: 1.55 !important; font-weight: 500 !important; }
+.text-base { font-size: 19px !important; }
+.text-lg { font-size: 22px !important; }
+.text-xl { font-size: 24px !important; }
+.text-2xl { font-size: 28px !important; }
+.text-3xl { font-size: 32px !important; }
+p, li, label, span { font-weight: 500; }
 .display { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif; letter-spacing: -0.01em; }
 .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
 
@@ -60,11 +64,12 @@ p, span, label, button, a, h1, h2, h3, h4, h5, h6, div { opacity: 1 !important; 
 
 .chip {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 12px; background: var(--accent-soft); color: var(--accent-ink);
-  border-radius: 999px; font-size: 15px; font-weight: 600;
+  padding: 8px 12px; background: #FFFFFF; color: #000000;
+  border: 2px solid #000000;
+  border-radius: 999px; font-size: 15px; font-weight: 700;
 }
-.chip-calm { background: var(--calm-soft); color: var(--calm); }
-.chip-danger { background: var(--danger-soft); color: var(--danger); }
+.chip-calm { background: #FFFFFF; color: #000000; border-color: #006400; }
+.chip-danger { background: #FFFFFF; color: #000000; border-color: #B00000; }
 
 .bottom-nav {
   position: absolute; left: 0; right: 0; bottom: 0;
