@@ -31,7 +31,7 @@ Los mockups viven en `public/mockups/` y se copian a `out/mockups/` durante el b
 
 ```bash
 curl -I https://sigilo.mx/
-curl -I https://sigilo.mx/mockups/lumos/v1/index.html
+curl -I https://sigilo.mx/lumos/
 ```
 
 ## Troubleshooting
@@ -53,4 +53,5 @@ Propuestas y mockups servidos como estáticos:
 
 - `sigilo.mx/propuesta/5e839a01ae04b584` — FlotaPro privada
 - `sigilo.mx/propuesta/publica` — censurada, ejemplo público
-- `sigilo.mx/mockups/lumos/v1/index.html` — Lumos v1
+- `sigilo.mx/lumos/` — Lumos (sitio)
+- `sigilo.mx/lumos/revision-clinica/v1/` — revisión clínica (11 pantallas + docs)
